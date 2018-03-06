@@ -1,5 +1,5 @@
-<template lang="pug">
-    div(ref='vueMapboxMap')
+<template lang='pug'>
+    div(ref='mapboxMapDiv')
 </template>
 
 <style lang='scss'>
@@ -60,7 +60,7 @@
     mounted () {
       mapboxgl.accessToken = this.accessToken
       this.map = new mapboxgl.Map({
-        container: this.$refs.vueMapboxMap,
+        container: this.$refs.mapboxMapDiv,
         style: this.mapStyle,
         interactive: this.interactive,
         center: [

@@ -52,7 +52,7 @@ module.exports = [
   merge(commonConfig, {
     entry: path.resolve(__dirname, './src/VueMapboxMap.vue'),
     output: {
-      filename: 'vueMapboxMap.js',
+      filename: 'vue-mapbox-map.js',
       libraryTarget: 'umd',
       library: 'VueMapboxMap',
       umdNamedDefine: true
