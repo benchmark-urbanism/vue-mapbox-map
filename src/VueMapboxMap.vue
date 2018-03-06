@@ -1,8 +1,8 @@
-<template>
-    <div ref='vueMapboxMap'></div>
+<template lang="pug">
+    div(ref='vueMapboxMap')
 </template>
 
-<style>
+<style lang='scss'>
     @import url("https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css");
     @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css");
 </style>

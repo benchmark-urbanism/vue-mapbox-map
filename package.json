@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "mapbox-gl-js for vue",
   "homepage": "https://github.com/cityseer/vue-mapbox-map",
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
@@ -25,7 +25,10 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.10",
+    "node-sass": "^4.7.2",
+    "pug": "^2.0.0",
     "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.7",
     "vue-loader": "^14.1.1",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^4.1.0",
