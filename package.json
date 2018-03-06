@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "mapbox-gl-js for vue",
   "homepage": "https://github.com/cityseer/vue-mapbox-map",
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
@@ -13,7 +13,7 @@
     "vue",
     "mapbox"
   ],
-  "author": "Gareth Simons",
+  "author": "Gareth Simons <gareth@cityseer.io>",
   "license": "LGPL-3.0",
   "private": false,
   "dependencies": {

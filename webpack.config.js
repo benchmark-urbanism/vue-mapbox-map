@@ -45,7 +45,7 @@ module.exports = [
     output: {
       filename: 'vue-mapbox-map.min.js',
       libraryTarget: 'window',
-      library: 'vueMapboxMap'
+      library: 'VueMapboxMap'
     }
   }),
   // for node environments
@@ -54,7 +54,7 @@ module.exports = [
     output: {
       filename: 'vueMapboxMap.js',
       libraryTarget: 'umd',
-      library: 'vueMapboxMap',
+      library: 'VueMapboxMap',
       umdNamedDefine: true
     }
   })
