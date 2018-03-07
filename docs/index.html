@@ -41,6 +41,13 @@
             left: 50%;
             width: 50%;
         }
+
+        pre code {
+            background-color: rgba(41, 67, 78, 0.1);
+            color: rgba(41, 67, 78, 0.9);
+            display: block;
+        }
+
     </style>
 </head>
 
@@ -78,17 +85,34 @@
             </a>
             module for dynamic maps.
         </p>
+        <br>
+        <h3>
+            Add dynamic mapbox instances to your Vue components:
+        </h3>
+        <pre><code>
+    &lt;vue-mapbox-map id='map'
+                    :access-token='accessToken'
+                    :interactive='false'
+                    :geocoder='false'
+                    :lng='lng'
+                    :lat='lat'
+                    :zoom='zoom'
+                    :pitch='pitch'
+                    :bearing='bearing'
+    &gt;&lt;/vue-mapbox-map&gt;
+        </code></pre>
+        <br>
         <h3>
             Scroll to update the map dynamically!
         </h3>
         <p>
-            Zoom: {{ zoom.toLocaleString() }}
+        Zoom: {{ zoom.toLocaleString() }}
         </p>
         <p>
-            Pitch: {{ pitch.toLocaleString() }}
+        Pitch: {{ pitch.toLocaleString() }}
         </p>
         <p>
-            Bearing: {{ bearing.toLocaleString() }}
+        Bearing: {{ bearing.toLocaleString() }}
         </p>
         <h4 align='center'>
             <a href='https://github.com/cityseer/vue-mapbox-map/blob/master/docs/index.html'>
