@@ -1,7 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css="@import url(\"https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css\"); @import url(\"https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css\"); "; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
+(function(){ if(typeof document !== 'undefined'){ var head=document.head||document.getElementsByTagName('head')[0], style=document.createElement('style'), css=""; style.type='text/css'; if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style); } })();
 
 var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"mapboxMapDiv"})},staticRenderFns: [],
   name: 'VueMapboxMap',
@@ -42,7 +42,7 @@ var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;va
     },
     pitch: {
       type: Number,
-      default: 90
+      default: 60
     },
     bearing: {
       type: Number,
@@ -121,17 +121,17 @@ var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;va
       }
     },
     pitch: function pitch (val) {
-      if (val && this.map) {
+      if (val >= 0 && val <= 60 && this.map) {
         this.map.setPitch(val);
       } else {
-        console.error(("NOTE -> Unable to update pitch to " + val + "."));
+        console.error(("NOTE -> Unable to update pitch to " + val + ". Exceeds permitted range."));
       }
     },
     bearing: function bearing (val) {
-      if (val && this.map) {
+      if (val >= 0 && val <= 360 && this.map) {
         this.map.setBearing(val);
       } else {
-        console.error(("NOTE -> Unable to update bearing to " + val + "."));
+        console.error(("NOTE -> Unable to update bearing to " + val + ". Exceeds permitted range."));
       }
     }
   }
