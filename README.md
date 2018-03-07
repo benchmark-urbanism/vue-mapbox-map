@@ -178,7 +178,7 @@ methods: {
     }
 }
 ```
-A `mapboxDestroyed` event is emitted when the map is destroyed.
+A `@mapboxDestroyed` event is emitted when the map is destroyed.
 
 Requests
 --------
