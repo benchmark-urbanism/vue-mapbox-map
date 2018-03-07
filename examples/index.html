@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vue-mapbox-map example</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js" type="text/javascript"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js' type="text/javascript"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' type='text/css' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js' type="text/javascript"></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' rel='stylesheet' type='text/css' />
+    <!--script src='https://unpkg.com/vue-mapbox-map/dist/vue-mapbox-map.umd.js'></script-->
+    <script src='../dist/vue-mapbox-map.umd.js' type='text/javascript'></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+
+    <style>
+        body { margin:0; padding:0; height:2000px; font-family: 'Raleway', sans-serif; }
+        #map { position:fixed; top:0; bottom:0; width:50%; }
+        #side-pane { position: fixed; padding: 50px; left: 50% }
+    </style>
+</head>
+
+<body>
+<div id='app'>
+    <vue-mapbox-map id='map'
+                    :access-token='accessToken'
+                    :lng='lng'
+                    :lat='lat'
+                    :zoom='zoom'
+                    :pitch='pitch'
+                    :bearing='bearing'
+    ></vue-mapbox-map>
+    <div id='side-pane'>
+        <h2>
+            Vue-Mapbox-Map
+        </h2>
+        <p>
+            <a href='https://www.mapbox.com/mapbox-gl-js/api/'>
+                Mapbox GL JS
+            </a>
+            wrapped in a
+            <a href='https://vuejs.org/'>
+                Vue
+            </a>
+            module for dynamic maps!
+        </p>
+        <h3>
+            Scroll to update the map dynamically!
+        </h3>
+        <p>
+            Zoom: {{ zoom.toLocaleString() }}
+        </p>
+        <p>
+            Pitch: {{ pitch.toLocaleString() }}
+        </p>
+        <p>
+            Bearing: {{ bearing.toLocaleString() }}
+        </p>
+        <br>
+        <div align='center'>
+            <a href='https://github.com/cityseer/vue-mapbox-map'>
+                <i class="fa fa-github fa-5x"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+  // base variables for manipulation
+  const baseZoom = 13
+  const basePitch = 20
+  const baseBearing = 0
+
+  // Vue instance
+  const app = new Vue({
+    // DOM target element
+    el: '#app',
+    data: {
+      accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjajN5OXFiZ2YwMDE2MzJtdnFjbGRzMXZjIn0.BOMupgo3NO-bA4_NMWRC5A',
+      lng: -73.984495,
+      lat: 40.756027,
+      zoom: baseZoom,
+      pitch: basePitch,
+      bearing: baseBearing
+    },
+    // Add vue-mapbox-map component
+    components: {
+      'vue-mapbox-map': VueMapboxMap
+    }
+  })
+  document.body.onscroll = function() {
+    // get offset
+    let offset = Math.round(window.document.documentElement.scrollTop || document.body.scrollTop);
+    // normalise
+    offset = offset / (2000 - window.innerHeight)
+    app.zoom = baseZoom + (offset * 5)
+    app.pitch = basePitch + (offset * 30)
+    app.bearing = baseBearing + (offset * 100)
+  }
+</script>
+</body>
+</html>
