@@ -4,22 +4,17 @@ import builtins from 'rollup-plugin-node-builtins'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import uglify from 'rollup-plugin-uglify'
-import pkg from './package.json'
+import pkg from './package.json' // import names from package to reduce errors
 
 // see https://github.com/rollup/rollup-starter-lib/blob/buble/rollup.config.js
 export default [
-
-  // browser friendly UMD
+  // browser friendly UMD build
   {
     input: 'src/index.js',
     output: {
       name: 'VueMapboxMap',
       file: pkg.browser,
-      format: 'umd',
-      globals: {
-        'mapbox-gl': 'mapboxgl',
-        '@mapbox/mapbox-gl-geocoder': 'MapboxGeocoder'
-      }
+      format: 'umd'
     },
     plugins: [
       resolve({
@@ -28,7 +23,8 @@ export default [
       commonjs(),
       builtins(),
       vue({
-        // compileTemplate: true // true by default
+        compileTemplate: true, // true by default
+        css: true
       }),
       buble({
         exclude: ['node_modules/**']
@@ -36,7 +32,7 @@ export default [
       uglify()
     ]
   },
-  // browser friendly UMD
+  // CommonJS (for Node) and ES module (for bundlers) build
   {
     input: 'src/index.js',
     external: [ 'mapbox-gl', '@mapbox/mapbox-gl-geocoder' ], // suppresses warnings about external modules
@@ -62,7 +58,8 @@ export default [
     ],
     plugins: [
       vue({
-        // compileTemplate: true // true by default
+        compileTemplate: true, // true by default
+        css: true
       }),
       buble({
         exclude: ['node_modules/**']
