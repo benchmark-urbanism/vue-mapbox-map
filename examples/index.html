@@ -26,6 +26,8 @@
 <div id='app'>
     <vue-mapbox-map id='map'
                     :access-token='accessToken'
+                    :interactive='false'
+                    :geocoder='true'
                     :lng='lng'
                     :lat='lat'
                     :zoom='zoom'
