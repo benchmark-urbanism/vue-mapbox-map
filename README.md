@@ -2,7 +2,7 @@ vue-mapbox-map
 ==============
 This is a [Vue](https://vuejs.org/) component that wraps [mapbox-gl-js](https://www.mapbox.com/mapbox-gl-js/api/). This lets you dynamically control the map from your Vue components.
 
-Live example: [Vue-Mapbox-Map](https://cityseer.github.io/vue-mapbox-map/index.html).
+Live example: [Vue-Mapbox-Map](https://cityseer.github.io/vue-mapbox-map/).
 
 1. [Web Usage](#web-usage)
 1. [Module Usage](#module-usage)
