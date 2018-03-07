@@ -180,6 +180,6 @@ methods: {
 ```
 A `@mapboxDestroyed` event is emitted when the map is destroyed.
 
-Requests
---------
-Additional functionality can be requested in the issues.
+Additional Functionality
+------------------------
+Please use the issues tracker to raise any requests for additional functionality.
