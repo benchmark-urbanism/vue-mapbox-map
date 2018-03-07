@@ -85,13 +85,11 @@ var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;va
         }
       }));
     }
+    // return the map for reference from parent component
+    this.map.on('load', function () { this$1.$emit('mapboxReady', this$1.map); });
     this.map.on('dragend', function () { this$1.$emit('dragend'); });
     this.map.on('zoomend', function () { this$1.$emit('zoomend'); });
-    // return the map for reference from parent component
-    this.$emit('mapboxReady', this.map);
-  },
-  destroyed: function destroyed () {
-    this.$emit('mapboxDestroyed');
+    this.map.on('remove', function () { this$1.$emit('mapboxDestroyed'); });
   },
   watch: {
     mapStyle: {

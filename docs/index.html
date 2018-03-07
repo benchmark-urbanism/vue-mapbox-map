@@ -11,13 +11,13 @@
     <!-- vue -->
     <script src='https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.js'></script>
     <!-- mapbox -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css'/>
     <link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css'/>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
     <!-- vue-mapbox-map -->
-    <script src='https://unpkg.com/vue-mapbox-map@latest/dist/vue-mapbox-map.umd.js'></script>
-    <!--script src='../dist/vue-mapbox-map.umd.js'></script-->
+    <!--script src='https://unpkg.com/vue-mapbox-map@latest/dist/vue-mapbox-map.umd.js'></script-->
+    <script src='../dist/vue-mapbox-map.umd.js'></script>
 
     <style>
         body {
@@ -37,7 +37,9 @@
         #side-pane {
             position: fixed;
             padding: 50px;
-            left: 50%
+            box-sizing: border-box;
+            left: 50%;
+            width: 50%;
         }
     </style>
 </head>
@@ -55,11 +57,17 @@
                     :bearing='bearing'
     ></vue-mapbox-map>
     <div id='side-pane'>
-        <h2>
+        <div align='center'>
+            <a href='https://github.com/cityseer/vue-mapbox-map'>
+                <i class='fa fa-github fa-5x'></i>
+            </a>
+        </div>
+        <h2 align='center'>
             <a href='https://github.com/cityseer/vue-mapbox-map'>
                 vue-mapbox-map
             </a>
         </h2>
+        <br>
         <p>
             <a href='https://www.mapbox.com/mapbox-gl-js/api/'>
                 Mapbox GL JS
@@ -68,7 +76,7 @@
             <a href='https://vuejs.org/'>
                 Vue
             </a>
-            module for dynamic maps!
+            module for dynamic maps.
         </p>
         <h3>
             Scroll to update the map dynamically!
@@ -82,12 +90,6 @@
         <p>
             Bearing: {{ bearing.toLocaleString() }}
         </p>
-        <br>
-        <div align='center'>
-            <a href='https://github.com/cityseer/vue-mapbox-map'>
-                <i class='fa fa-github fa-5x'></i>
-            </a>
-        </div>
     </div>
 </div>
 
@@ -104,8 +106,8 @@
     el: '#app',
     data: {
       accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjamVoN25yYTQxMXBwMzNuc2ZkeGk5eGtzIn0.ZQNxwHhtZDBfsVNjDL0c7A',
-      lng: -73.984495,
-      lat: 40.756027,
+      lng: -73.982,
+      lat: 40.768,
       zoom: baseZoom,
       pitch: basePitch,
       bearing: baseBearing
