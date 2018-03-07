@@ -2,11 +2,6 @@
     div(ref='mapboxMapDiv')
 </template>
 
-<style lang='scss'>
-    @import url("https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css");
-    @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css");
-</style>
-
 <script>
   import mapboxgl from 'mapbox-gl'
   import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
@@ -50,7 +45,7 @@
       },
       pitch: {
         type: Number,
-        default: 90
+        default: 60
       },
       bearing: {
         type: Number,
@@ -127,17 +122,17 @@
         }
       },
       pitch (val) {
-        if (val && this.map) {
+        if (val >= 0 && val <= 60 && this.map) {
           this.map.setPitch(val)
         } else {
-          console.error(`NOTE -> Unable to update pitch to ${val}.`)
+          console.error(`NOTE -> Unable to update pitch to ${val}. Exceeds permitted range.`)
         }
       },
       bearing (val) {
-        if (val && this.map) {
+        if (val >= 0 && val <= 360 && this.map) {
           this.map.setBearing(val)
         } else {
-          console.error(`NOTE -> Unable to update bearing to ${val}.`)
+          console.error(`NOTE -> Unable to update bearing to ${val}. Exceeds permitted range.`)
         }
       }
     }
