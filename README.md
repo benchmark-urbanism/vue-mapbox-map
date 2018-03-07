@@ -103,7 +103,7 @@ components: {
 You can then use it in your `html`:
 ```html
 <vue-mapbox-map id='map'
-    accessToken='scene.accessToken'
+    :accessToken='scene.accessToken'
     :mapStyle='scene.mapboxStyle'
     :interactive='false'
     :geocoder='false'
@@ -170,7 +170,7 @@ props: {
   }
 }
 ```
-A `@mapboxReady` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent manipulation of the map object, for example:
+A `@mapboxReady` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent interaction with the map object, for example:
 ```javascript
 methods: {
   setMap (map) {
