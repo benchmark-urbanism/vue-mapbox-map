@@ -3,7 +3,6 @@ import buble from 'rollup-plugin-buble'
 import builtins from 'rollup-plugin-node-builtins'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
-import uglify from 'rollup-plugin-uglify'
 import pkg from './package.json' // import names from package to reduce errors
 
 // see https://github.com/rollup/rollup-starter-lib/blob/buble/rollup.config.js
@@ -28,8 +27,7 @@ export default [
       }),
       buble({
         exclude: ['node_modules/**']
-      }),
-      uglify()
+      })
     ]
   },
   // CommonJS (for Node) and ES module (for bundlers) build
@@ -63,8 +61,7 @@ export default [
       }),
       buble({
         exclude: ['node_modules/**']
-      }),
-      uglify()
+      })
     ]
   }
 ]

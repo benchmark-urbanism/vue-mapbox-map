@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "dynamic mapbox-gl component for vue",
   "homepage": "https://github.com/cityseer/vue-mapbox-map",
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
@@ -31,7 +31,6 @@
     "rollup-plugin-commonjs": "^9.0.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^3.0.3",
-    "rollup-plugin-uglify": "^3.0.0",
     "rollup-plugin-vue": "^3.0.0",
     "vue-template-compiler": "^2.5.13"
   }
