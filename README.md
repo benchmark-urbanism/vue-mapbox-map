@@ -112,8 +112,8 @@ You can then use it in your `html`:
     :zoom='scene.zoom'
     :pitch='scene.pitch'
     :bearing='scene.bearing'
-    @mapboxReady='setMap'
-    @mapboxDestroyed='unsetMap'
+    @mapbox-ready='setMap'
+    @mapbox-destroyed='unsetMap'
     ></vue-mapbox-map>
 ```
 from which you can make reference to your `vue` component's data context.
@@ -170,7 +170,7 @@ props: {
   }
 }
 ```
-A `@mapboxReady` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent interaction with the map object, for example:
+A `@mapbox-ready` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent interaction with the map object, for example:
 ```javascript
 methods: {
   setMap (map) {
@@ -178,7 +178,7 @@ methods: {
     }
 }
 ```
-A `@mapboxDestroyed` event is emitted when the map is destroyed.
+A `@mapbox-destroyed` event is emitted when the map is destroyed.
 
 Additional Functionality
 ------------------------

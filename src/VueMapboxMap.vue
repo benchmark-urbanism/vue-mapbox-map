@@ -87,10 +87,10 @@
         }))
       }
       // return the map for reference from parent component
-      this.map.on('load', () => { this.$emit('mapboxReady', this.map) })
+      this.map.on('load', () => { this.$emit('mapbox-ready', this.map) })
       this.map.on('dragend', () => { this.$emit('dragend') })
       this.map.on('zoomend', () => { this.$emit('zoomend') })
-      this.map.on('remove', () => { this.$emit('mapboxDestroyed') })
+      this.map.on('remove', () => { this.$emit('mapbox-destroyed') })
     },
     watch: {
       mapStyle: {
