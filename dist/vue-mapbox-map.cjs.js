@@ -15,39 +15,47 @@ var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;va
     }
   },
   props: {
+    // mapbox requires an access token
     accessToken: {
       type: String,
       required: true
     },
+    // target map style, you can also load a local map style configuration
     mapStyle: {
       type: [String, Object],
       default: 'mapbox://styles/mapbox/light-v9'
     },
-    // whether map can be interacted with by user
+    // whether map can be interacted with
     interactive: {
       type: Boolean,
       default: true
     },
+    // whether to instance the geocoder
     geocoder: {
       type: Boolean,
       default: false
     },
+    // longitude (dynamic)
     lng: {
       type: Number,
       required: true
     },
+    // latitude (dynamic)
     lat: {
       type: Number,
       required: true
     },
+    // zoom (dynamic)
     zoom: {
       type: Number,
       default: 13
     },
+    // pitch (dynamic)
     pitch: {
       type: Number,
       default: 60
     },
+    // bearing (dynamic)
     bearing: {
       type: Number,
       default: 0
