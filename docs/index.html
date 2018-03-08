@@ -135,6 +135,10 @@
   const app = new Vue({
     // DOM target element
     el: '#app',
+    // Add vue-mapbox-map component
+    components: {
+      'vue-mapbox-map': VueMapboxMap
+    },
     data: {
       accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjamVoN25yYTQxMXBwMzNuc2ZkeGk5eGtzIn0.ZQNxwHhtZDBfsVNjDL0c7A',
       lng: -73.982,
@@ -142,10 +146,6 @@
       zoom: baseZoom,
       pitch: basePitch,
       bearing: baseBearing
-    },
-    // Add vue-mapbox-map component
-    components: {
-      'vue-mapbox-map': VueMapboxMap
     }
   })
   document.body.onscroll = function () {
