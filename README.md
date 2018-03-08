@@ -53,14 +53,9 @@ and remember to add a CSS style for your map div so that it does not collapse:
  width: 100%;
 }
 ```
-You can then import the component into your app:
+You can then import the component into your app and register the component:
 ```javascript
 import VueMapboxMap from 'vue-mapbox-map'
-
-...
-components: {
-  'vue-mapbox-map': VueMapboxMap
-}
 ```
 
 General Usage
