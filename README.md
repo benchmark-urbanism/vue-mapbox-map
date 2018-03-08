@@ -38,11 +38,7 @@ To use the component in your application, install via `yarn` or `npm`:
 ```
 yarn add vue-mapbox-map
 ```
-The module depends on `mapbox-gl` and `@mapbox/mapbox-gl-geocoder`:
-```
-yarn add mapbox-gl @mapbox/mapbox-gl-geocoder
-```
-`mapboxgl` and `MapboxGeocoder`'s CSS files are not bundled in the module, so include them directly in your CSS:
+`vue-mapbox-map` will install its dependencies for `mapboxgl` and `MapboxGeocoder`, but their CSS files are not bundled in the module, so include these directly in your CSS:
 ```css
 @import url("https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css");
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css");
