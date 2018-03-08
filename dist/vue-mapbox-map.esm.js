@@ -12,12 +12,12 @@ var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;va
   },
   props: {
     // mapbox requires an access token
-    accessToken: {
+    'access-token': {
       type: String,
       required: true
     },
     // target map style, you can also load a local map style configuration
-    mapStyle: {
+    'map-style': {
       type: [String, Object],
       default: 'mapbox://styles/mapbox/light-v9'
     },
