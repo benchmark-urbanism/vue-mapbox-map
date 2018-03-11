@@ -1,12 +1,13 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A Vue component for dynamic Mapbox GL JS maps!",
   "homepage": "https://github.com/cityseer/vue-mapbox-map",
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
   "main": "dist/vue-mapbox-map.cjs.js",
   "module": "dist/vue-mapbox-map.esm.js",
   "browser": "dist/vue-mapbox-map.umd.js",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
