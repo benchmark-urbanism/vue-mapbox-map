@@ -37,27 +37,27 @@ var VueMapboxMap = {render: function(){var _vm=this;var _h=_vm.$createElement;va
     },
     // longitude (dynamic)
     lng: {
-      type: Number,
+      type: [Number, String],
       required: true
     },
     // latitude (dynamic)
     lat: {
-      type: Number,
+      type: [Number, String],
       required: true
     },
     // zoom (dynamic)
     zoom: {
-      type: Number,
+      type: [Number, String],
       default: 13
     },
     // pitch (dynamic)
     pitch: {
-      type: Number,
+      type: [Number, String],
       default: 60
     },
     // bearing (dynamic)
     bearing: {
-      type: Number,
+      type: [Number, String],
       default: 0
     }
   },
