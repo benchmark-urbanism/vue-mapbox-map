@@ -1,5 +1,5 @@
-<template lang='pug'>
-    div(ref='mapboxMapDiv')
+<template>
+    <div ref='mapboxMapDiv'></div>
 </template>
 
 <script>
@@ -23,6 +23,12 @@
       'map-style': {
         type: [String, Object],
         default: 'mapbox://styles/mapbox/light-v9'
+      },
+      // whether to display the attribution control
+      // this is required by mapbox unless you fulfill this requirement elsehow
+      'attribution-control': {
+        type: Boolean,
+        default: true
       },
       // whether map can be interacted with
       interactive: {
@@ -72,7 +78,8 @@
         ],
         zoom: this.zoom,
         bearing: this.bearing,
-        pitch: this.pitch
+        pitch: this.pitch,
+        attributionControl: this.attributionControl
       })
       if (this.geocoder) {
         this.map.addControl(new MapboxGeocoder({
