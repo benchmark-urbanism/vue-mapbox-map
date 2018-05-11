@@ -86,7 +86,7 @@
           accessToken: this.accessToken,
           zoom: 18,
           flyTo: true,
-          // bias results closer to london
+          // bias results closer to starting point
           proximity: {
             longitude: this.lng,
             latitude: this.lat
