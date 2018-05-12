@@ -85,7 +85,7 @@ var script = {
         accessToken: this.accessToken,
         zoom: 18,
         flyTo: true,
-        // bias results closer to london
+        // bias results closer to starting point
         proximity: {
           longitude: this.lng,
           latitude: this.lat
@@ -94,8 +94,6 @@ var script = {
     }
     // return the map for reference from parent component
     this.map.on('load', function () { this$1.$emit('mapbox-ready', this$1.map); });
-    this.map.on('dragend', function () { this$1.$emit('dragend'); });
-    this.map.on('zoomend', function () { this$1.$emit('zoomend'); });
     this.map.on('remove', function () { this$1.$emit('mapbox-destroyed'); });
   },
   watch: {

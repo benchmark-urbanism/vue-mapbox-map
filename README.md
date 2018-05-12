@@ -159,6 +159,8 @@ methods: {
 ```
 A `@mapbox-destroyed` event is emitted when the map is destroyed.
 
+Other event listeners should be added to the returned map object directly.
+
 Additional Functionality
 ------------------------
 Please use the issues tracker to request exposing any additional functionality.
