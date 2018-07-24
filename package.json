@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "description": "A Vue component for dynamic Mapbox GL JS maps!",
   "homepage": "https://github.com/cityseer/vue-mapbox-map",
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
@@ -23,13 +23,13 @@
   "license": "GPL-3.0",
   "private": false,
   "dependencies": {
-    "@mapbox/mapbox-gl-geocoder": "^2.2.0",
-    "mapbox-gl": "^0.45.0"
+    "@mapbox/mapbox-gl-geocoder": "^2.3.0",
+    "mapbox-gl": "^0.47.0"
   },
   "devDependencies": {
-    "rollup": "^0.58.2",
+    "rollup": "^0.63.4",
     "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-vue": "4.0.2",
+    "rollup-plugin-vue": "4.3.1",
     "vue": "^2.5.13",
     "vue-template-compiler": "^2.5.13"
   }
