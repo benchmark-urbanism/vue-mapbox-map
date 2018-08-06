@@ -40,8 +40,8 @@ yarn add vue-mapbox-map
 ```
 `vue-mapbox-map` will install its dependencies for `mapboxgl` and `MapboxGeocoder`, but their CSS files are not bundled in the module, so include these directly in your CSS:
 ```css
-@import url("https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css");
-@import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css");
 ```
 and remember to add a CSS style for your map div so that it does not collapse:
 ```css
