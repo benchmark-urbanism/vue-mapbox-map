@@ -177,9 +177,8 @@ __vue_render__._withStripped = true;
   ) {
     var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
 
-    {
-      component.__file = "/Users/gareth/dev/github/vue-mapbox-map/src/VueMapboxMap.vue";
-    }
+    // For security concerns, we use only base name in production mode.
+    component.__file = "/Users/gareth/dev/github/vue-mapbox-map/src/VueMapboxMap.vue";
 
     if (!component.render) {
       component.render = template.render;
