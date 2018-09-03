@@ -40,6 +40,15 @@
         type: Boolean,
         default: false
       },
+      // whether to jump, ease, or fly for transitions
+      transitionMode: {
+        type: String,
+        required: false,
+        default: 'jump',
+        validator: function (value) {
+          return ['jump', 'ease', 'fly'].indexOf(value) !== -1
+        }
+      },
       // longitude (dynamic)
       lng: {
         type: [Number, String],
@@ -97,6 +106,16 @@
       this.map.on('load', () => { this.$emit('mapbox-ready', this.map) })
       this.map.on('remove', () => { this.$emit('mapbox-destroyed') })
     },
+    computed: {
+      mapScene () {
+        return {
+          center: [this.lng, this.lat],
+          zoom: this.zoom,
+          bearing: this.bearing,
+          pitch: this.pitch
+        }
+      }
+    },
     watch: {
       mapStyle: {
         deep: true,
@@ -111,39 +130,27 @@
           }
         }
       },
-      lng (val) {
-        if (val && this.map && this.lat) {
-          this.map.jumpTo({ center: [this.lng, this.lat ] })
-        } else {
-          console.error(`NOTE -> Unable to update centre to ${this.lng}, ${this.lat}.`)
-        }
-      },
-      lat (val) {
-        if (val && this.map && this.lng) {
-          this.map.jumpTo({center: [this.lng, this.lat]})
-        } else {
-          console.error(`NOTE -> Unable to update centre to ${this.lng}, ${this.lat}.`)
-        }
-      },
-      zoom (val) {
-        if (val && this.map) {
-          this.map.setZoom(val)
-        } else {
-          console.error(`NOTE -> Unable to update zoom to ${val}.`)
-        }
-      },
-      pitch (val) {
-        if (val >= 0 && val <= 60 && this.map) {
-          this.map.setPitch(val)
-        } else {
-          console.error(`NOTE -> Unable to update pitch to ${val}. Exceeds permitted range.`)
-        }
-      },
-      bearing (val) {
-        if (val >= 0 && val <= 360 && this.map) {
-          this.map.setBearing(val)
-        } else {
-          console.error(`NOTE -> Unable to update bearing to ${val}. Exceeds permitted range.`)
+      mapScene (val) {
+        if (val) {
+          if (!this.map) {
+            console.error('NOTE -> Map object not set')
+            return
+          }
+          if (val.pitch < 0 || val.pitch > 60 ) {
+            console.error(`NOTE -> Unable to update pitch to ${val.pitch}. Exceeds permitted range.`)
+            return
+          }
+          if (val.bearing < 0 || val.bearing > 360) {
+            console.error(`NOTE -> Unable to update bearing to ${val.bearing}. Exceeds permitted range.`)
+            return
+          }
+          if (this.transitionMode === 'jump') {
+            this.map.jumpTo(val)
+          } else if (this.transitionMode === 'ease') {
+            this.map.easeTo(val)
+          } else if (this.transitionMode === 'fly') {
+            this.map.flyTo(val)
+          }
         }
       }
     }
