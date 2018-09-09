@@ -17,9 +17,9 @@ Web Usage
 To use from the web, import the Mapbox GL JS and Mapbox Geocoder scripts and stylesheets, then import the `vue-mapbox-map` script. This will add `VueMapboxMap` to the global namespace, which in turn depends on `mapboxgl` and `MapboxGeocoder`:
 ```html
     <!-- mapbox -->
-    <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css'/>
+    <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0-beta.1/mapbox-gl.css'/>
     <link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css'/>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0-beta.1/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
     <!-- vue-mapbox-map -->
     <script src='https://unpkg.com/vue-mapbox-map@latest/dist/vue-mapbox-map.umd.js'></script>
@@ -40,7 +40,7 @@ yarn add vue-mapbox-map
 ```
 `vue-mapbox-map` will install its dependencies for `mapboxgl` and `MapboxGeocoder`, but their CSS files are not bundled in the module, so include these directly in your CSS:
 ```css
-@import url("https://api.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/v0.49.0-beta.1/mapbox-gl.css");
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css");
 ```
 and remember to add a CSS style for your map div so that it does not collapse:
@@ -105,7 +105,7 @@ props: {
   // mapbox requires an access token
   'access-token': {
     type: String,
-    required: true
+    required: false
   },
   // target map style, you can also load a local map style configuration
   'map-style': {

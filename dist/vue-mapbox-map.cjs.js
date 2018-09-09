@@ -18,7 +18,7 @@ var script = {
     // mapbox requires an access token
     'access-token': {
       type: String,
-      required: true
+      required: false
     },
     // target map style, you can also load a local map style configuration
     'map-style': {
@@ -79,7 +79,11 @@ var script = {
   mounted: function mounted () {
     var this$1 = this;
 
-    mapboxgl.accessToken = this.accessToken;
+    if (this.accessToken) {
+      mapboxgl.accessToken = this.accessToken;
+    } else {
+      console.warn('NOTE -> No access token has been provided, however, if using Mapbox hosted tiles then this omission may break your map');
+    }
     this.map = new mapboxgl.Map({
       container: this.$refs.mapboxMapDiv,
       style: this.mapStyle,
