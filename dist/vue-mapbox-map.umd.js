@@ -84,7 +84,7 @@
       if (this.accessToken) {
         mapboxgl.accessToken = this.accessToken;
       } else {
-        console.warn('NOTE -> No access token has been provided, however, if using Mapbox hosted tiles then this omission may break your map');
+        console.warn('NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.');
       }
       this.map = new mapboxgl.Map({
         container: this.$refs.mapboxMapDiv,
