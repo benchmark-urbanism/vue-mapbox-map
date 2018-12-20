@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('mapbox-gl'), require('@mapbox/mapbox-gl-geocoder')) :
   typeof define === 'function' && define.amd ? define(['mapbox-gl', '@mapbox/mapbox-gl-geocoder'], factory) :
-  (global.VueMapboxMap = factory(global.mapboxgl,global.MapboxGeocoder));
-}(this, (function (mapboxgl,MapboxGeocoder) { 'use strict';
+  (global = global || self, global.VueMapboxMap = factory(global.mapboxgl, global.MapboxGeocoder));
+}(this, function (mapboxgl, MapboxGeocoder) { 'use strict';
 
   mapboxgl = mapboxgl && mapboxgl.hasOwnProperty('default') ? mapboxgl['default'] : mapboxgl;
   MapboxGeocoder = MapboxGeocoder && MapboxGeocoder.hasOwnProperty('default') ? MapboxGeocoder['default'] : MapboxGeocoder;
@@ -283,4 +283,4 @@
 
   return VueMapboxMap;
 
-})));
+}));
