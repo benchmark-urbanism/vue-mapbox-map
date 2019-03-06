@@ -12,7 +12,7 @@ export default {
     {
       name: 'VueMapboxMap',
       file: pkg.browser,
-      format: 'umd',
+      format: 'umd', // browser friendly UMD build
       globals: {
         'mapbox-gl': 'mapboxgl',
         '@mapbox/mapbox-gl-geocoder': 'MapboxGeocoder'
@@ -21,7 +21,7 @@ export default {
     {
       name: 'VueMapboxMap',
       file: pkg.main,
-      format: 'cjs',
+      format: 'cjs', // CommonJS (for Node)
       globals: {
         'mapbox-gl': 'mapboxgl',
         '@mapbox/mapbox-gl-geocoder': 'MapboxGeocoder'
@@ -30,7 +30,7 @@ export default {
     {
       name: 'VueMapboxMap',
       file: pkg.module,
-      format: 'es',
+      format: 'es', // ES module (for bundlers)
       globals: {
         'mapbox-gl': 'mapboxgl',
         '@mapbox/mapbox-gl-geocoder': 'MapboxGeocoder'
