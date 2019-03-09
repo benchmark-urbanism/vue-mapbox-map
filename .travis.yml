@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - node
+deploy:
+  provider: npm
+  email: garethsimons@me.com
+  api_key:
+    # use --com flag when encrypting to encrypt against travis.com instead of travis.org
+    secure: uWpzXEgBNU0dgdWTOBB8y/CCqZiWrBGpXZmWbN0aDCxnM4cWYi041vDuo30QgyED62iuMgHyhsCYGsHgcBhk2n6yVRTqjFGqTbnSkFj0sgcrDng5dEtHExxPBlVjWHk0TjSTCT1mmkIuvuNkIM5Jsqlbrc9bYkcHkGeDciveCo7TgXFrDW9SgiDT0RI7w+VlarPAT5zuCkLB4TUao1tBudIYRNMO6jjfFlzIJyfQEwGuXHHA1bOcakZFH5xKTr7TrCPHR7IvrvMTtzMSx4zZVSFzI5RQQjcsnxVv1cie5FXcfgELBLWkwLxKGteVZzuw3AYWpbYU9RcqI3l7jg2sGetQGCyRYjuA/UqpJAYd0L2IpOFf3P1jPrI22+5RGWOFQiMmWtGNmG7WYReVdCM9BdwMv7vpFZL9jsDghV/7jjkphA3s765y799YfwZkBzao0UXwhpYwW2fNQveoBoqzrbF7Gftg1qjzp2XVWCIf2m1ervXzEDeiETR0YocFv587e3gVguZec78j83vm9OBG021tWHxFpres85vHKeUWkQ/QvqLoUiuxSDI8kHYJNfGY+FAxzPm2uLJ23lxyUEweNkJWazp26I9NIZ4IIBCt7bvzZvlMLDlJTI6Jy+/1a7ZV9EX1ehc7cwBOTFl4KCO/W2DeG52cEuXoHgfT8kdpYUA=
+  on:
+    tags: true
+    branch: master
+    repo: cityseer/vue-mapbox-map
