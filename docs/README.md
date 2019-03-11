@@ -11,8 +11,6 @@ Demo
 ----
 
 <Demo/>
-http://localhost:8081/vue-mapbox-map/test.html
-http://localhost:8081/vue-mapbox-map/test.html
 
 Web Usage
 ---------
