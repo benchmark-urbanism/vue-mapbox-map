@@ -26,23 +26,15 @@
     "mapbox-gl": "0.53.1"
   },
   "devDependencies": {
+    "electron": "^4.0.8",
     "rollup": "1.4.1",
     "rollup-plugin-buble": "0.19.6",
     "rollup-plugin-commonjs": "9.2.1",
     "rollup-plugin-node-resolve": "4.0.1",
     "rollup-plugin-vue": "4.7.2",
     "standard": "12.0.1",
-    "pug": "^2.0.3",
-    "pug-plain-loader": "^1.0.0",
-    "sass": "^1.17.2",
-    "sass-loader": "^7.1.0",
     "vue": "^2.6.8",
     "vue-template-compiler": "^2.5.21",
     "vuepress": "^1.0.0-alpha.44"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  }
 }

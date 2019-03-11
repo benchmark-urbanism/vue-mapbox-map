@@ -1,27 +1,37 @@
-<template lang='pug'>
-  div
-    vue-mapbox-map(id='map',
-    :access-token='accessToken',
-    :interactive='false',
-    :geocoder='false',
-    :lng='lng',
-    :lat='lat',
-    :zoom='zoom',
-    :pitch='pitch',
-    :bearing='bearing')
-    div(id='info-pane')
-      p Zoom: {{ zoom.toLocaleString() }}
-      p Pitch: {{ pitch.toLocaleString() }}
-      p Bearing: {{ bearing.toLocaleString() }}
+<template>
+  <div>
+    <vue-mapbox-map id='map'
+                    :access-token='accessToken'
+                    :interactive='false'
+                    :geocoder='false'
+                    :lng='lng'
+                    :lat='lat'
+                    :zoom='zoom'
+                    :pitch='pitch'
+                    :bearing='bearing'></vue-mapbox-map>
+
+    <div id='info-pane'>
+      <p>
+        Zoom: {{ zoom.toLocaleString() }}
+      </p>
+      <p>
+        Pitch: {{ pitch.toLocaleString() }}
+      </p>
+      <p>
+        Bearing: {{ bearing.toLocaleString() }}
+      </p>
+    </div>
+  </div>
 
 </template>
 
-<style lang="stylus">
+<style>
 
-  #map
-    margin: 20px 0 20px 0
-    width: 100%
-    min-height: 400px
+  #map {
+    margin: 20px 0 20px 0;
+    width: 100%;
+    min-height: 400px;
+  }
 
 </style>
 
