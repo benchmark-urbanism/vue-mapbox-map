@@ -28,7 +28,7 @@
 <script>
 // not packaged with bundled code
 import 'mapbox-gl/dist/mapbox-gl.css'
-import VueMapboxMap from '../../../src/components/VueMapboxMap'
+import VueMapboxMap from '../../../src/VueMapboxMap'
 
 export default {
   name: 'VueMapboxMap-Demo',
