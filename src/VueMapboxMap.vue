@@ -3,6 +3,9 @@
 </template>
 
 <script>
+// not loading modules here to avoid issues with window scope in SSR rendered apps like Vuepress
+// see below for dynamic imports
+
 export default {
   name: 'VueMapboxMap',
   data () {
