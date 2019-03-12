@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.8.18",
+  "version": "0.8.19",
   "description": "A Vue component for dynamic Mapbox GL JS maps!",
   "homepage": "https://github.com/cityseer/vue-mapbox-map",
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
@@ -15,7 +15,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "bundle": "vue-cli-service build --target lib --name vue-mapbox-map --formats commonjs src/main.js",
+    "bundle": "vue-cli-service build --target lib --name vue-mapbox-map src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
