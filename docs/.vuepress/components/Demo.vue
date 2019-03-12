@@ -31,6 +31,9 @@
     width: 100%;
     min-height: 400px;
   }
+  #info-pane {
+    color: blue;
+  }
 </style>
 
 <script>
