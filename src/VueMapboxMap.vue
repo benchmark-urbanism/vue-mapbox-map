@@ -113,6 +113,7 @@ export default {
     if (typeof window.mapboxgl !== 'undefined' && typeof window.MapboxGeocoder !== 'undefined') {
       this.instanceMap()
     } else {
+      console.info('Loading mapboxgl and @mapbox/mapbox-gl-geocoder')
       Promise.all([
         import('mapbox-gl'),
         import('@mapbox/mapbox-gl-geocoder')

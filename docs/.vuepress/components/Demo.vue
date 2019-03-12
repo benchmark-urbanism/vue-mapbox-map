@@ -36,16 +36,13 @@
 </style>
 
 <script>
-// not packaged with bundled code
-import 'mapbox-gl/dist/mapbox-gl.css'
-// not in vuepress browser context, so add explicitly
-import mapboxgl from 'mapbox-gl'
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
+// mapbox and related geocoder and css files loaded in config.js head scripts
+import VueMapboxMap from '../../../src/VueMapboxMap'
 
 export default {
   name: 'VueMapboxMap-Demo',
   components: {
-    VueMapboxMap: () => import('../../../src/VueMapboxMap'),
+    VueMapboxMap
   },
   data () {
     return {

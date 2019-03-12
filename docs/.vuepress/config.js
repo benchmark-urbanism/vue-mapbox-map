@@ -2,6 +2,25 @@ module.exports = {
   base: '/vue-mapbox-map/',  // must match github pages publish URL
   title: 'vue-mapbox-map',
   description: 'A Vue component for dynamic Mapbox GL JS maps!',
+  // need to load these for mapbox maps
+  head: [
+    ['link', {
+      rel: 'stylesheet',
+      type: 'text/css',
+      href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'
+    }],
+    ['link', {
+      rel: 'stylesheet',
+      type: 'text/css',
+      href: 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'
+    }],
+    ['script', {
+      src: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'
+    }],
+    ['script', {
+      src: 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'
+    }]
+  ],
   markdown: {
     anchor: true,
   },
