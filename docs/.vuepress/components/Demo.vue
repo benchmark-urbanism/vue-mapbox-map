@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-mapbox-map-base id='map-container'
+    <vue-mapbox-map id='map-container'
                     :access-token='accessToken'
                     :interactive='false'
                     :geocoder='false'
@@ -8,7 +8,7 @@
                     :lat='lat'
                     :zoom='zoom'
                     :pitch='pitch'
-                    :bearing='bearing'></vue-mapbox-map-base>
+                    :bearing='bearing'></vue-mapbox-map>
 
     <div>
       <p>
@@ -35,12 +35,12 @@
 
 <script>
 // mapbox and related geocoder and css files loaded in config.js head scripts
-import VueMapboxMapBase from '../../../src/components/VueMapboxMapBase'
+import VueMapboxMap from '../../../src/components/VueMapboxMap'
 
 export default {
   name: 'VueMapboxMap-Demo',
   components: {
-    VueMapboxMapBase
+    VueMapboxMap
   },
   data () {
     return {
