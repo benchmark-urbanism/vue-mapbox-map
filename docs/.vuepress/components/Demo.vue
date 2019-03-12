@@ -10,7 +10,7 @@
                     :pitch='pitch'
                     :bearing='bearing'></vue-mapbox-map>
 
-    <div id='info-pane'>
+    <div>
       <p>
         Zoom: {{ zoom.toLocaleString() }}
       </p>
@@ -30,9 +30,6 @@
     margin: 20px 0 20px 0;
     width: 100%;
     min-height: 400px;
-  }
-  #info-pane {
-    color: blue;
   }
 </style>
 
