@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-mapbox-map id='map'
+    <vue-mapbox-map id='map-container'
                     :access-token='accessToken'
                     :interactive='false'
                     :geocoder='false'
@@ -25,9 +25,9 @@
 
 </template>
 
-<style>
+<style scoped>
 
-  #map {
+  #map-container {
     margin: 20px 0 20px 0;
     width: 100%;
     min-height: 400px;
