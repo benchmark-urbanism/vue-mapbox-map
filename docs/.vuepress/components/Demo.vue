@@ -38,12 +38,11 @@
 <script>
 // not packaged with bundled code
 import 'mapbox-gl/dist/mapbox-gl.css'
-import VueMapboxMap from '../../../src/VueMapboxMap'
 
 export default {
   name: 'VueMapboxMap-Demo',
   components: {
-    VueMapboxMap
+    VueMapboxMap: () => import('../../../src/VueMapboxMap'),
   },
   data () {
     return {
@@ -94,8 +93,8 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  // destroyed () {
-  //   window.removeEventListener('scroll', this.handleScroll)
-  // }
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
 }
 </script>

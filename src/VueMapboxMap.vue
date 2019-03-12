@@ -72,15 +72,14 @@ export default {
       default: 0
     }
   },
-  mounted () {
-    import('mapbox-gl').then(MapboxModule => {
-      const mapboxgl = MapboxModule.default
+  methods: {
+    instanceMap () {
       if (this.accessToken) {
-        mapboxgl.accessToken = this.accessToken
+        boomapboxgl.accessToken = this.accessToken
       } else {
         console.warn('NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.')
       }
-      this.map = new mapboxgl.Map({
+      this.map = new boomapboxgl.Map({
         container: this.$refs.mapboxMapDiv,
         style: this.mapStyle,
         interactive: this.interactive,
@@ -94,23 +93,38 @@ export default {
         attributionControl: this.attributionControl
       })
       if (this.geocoder) {
-        import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
-          this.map.addControl(new MapboxGeocoder({
-            accessToken: this.accessToken,
-            zoom: 18,
-            flyTo: true,
-            // bias results closer to starting point
-            proximity: {
-              longitude: this.lng,
-              latitude: this.lat
-            }
-          }))
-        })
+        this.map.addControl(new booMapboxGeocoder({
+          accessToken: this.accessToken,
+          zoom: 18,
+          flyTo: true,
+          // bias results closer to starting point
+          proximity: {
+            longitude: this.lng,
+            latitude: this.lat
+          }
+        }))
       }
       // return the map for reference from parent component
       this.map.on('load', () => { this.$emit('mapbox-ready', this.map) })
       this.map.on('remove', () => { this.$emit('mapbox-destroyed') })
-    })
+    }
+  },
+  mounted () {
+    console.log('nothing')
+    if (typeof window.mapboxgl !== 'undefined' && typeof window.MapboxGeocoder !== 'undefined') {
+      console.log('no need to load')
+      this.instanceMap()
+    } else {
+      console.log('loading...')
+      Promise.all([
+        import('mapbox-gl'),
+        import('@mapbox/mapbox-gl-geocoder')
+      ]).then(([MapboxModule, MapboxGeocoder]) => {
+        window.boomapboxgl = MapboxModule.default
+        window.booMapboxGeocoder = MapboxGeocoder
+        this.instanceMap()
+      })
+    }
   },
   computed: {
     mapScene () {
