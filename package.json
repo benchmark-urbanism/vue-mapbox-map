@@ -8,7 +8,6 @@
   "main": "dist/vue-mapbox-map.cjs.js",
   "module": "dist/vue-mapbox-map.esm.js",
   "browser": "dist/vue-mapbox-map.umd.js",
-  "sideEffects": false,
   "files": [
     "dist/*",
     "src/*",
