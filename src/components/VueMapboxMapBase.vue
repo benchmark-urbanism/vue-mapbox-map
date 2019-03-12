@@ -75,11 +75,11 @@ export default {
   },
   mounted () {
     if (this.accessToken) {
-      mapboxgl.accessToken = this.accessToken
+      window.mapboxgl.accessToken = this.accessToken
     } else {
       console.warn('NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.')
     }
-    this.map = new mapboxgl.Map({
+    this.map = new window.mapboxgl.Map({
       container: this.$refs.mapboxMapDiv,
       style: this.mapStyle,
       interactive: this.interactive,
@@ -93,7 +93,7 @@ export default {
       attributionControl: this.attributionControl
     })
     if (this.geocoder) {
-      this.map.addControl(new MapboxGeocoder({
+      this.map.addControl(new window.MapboxGeocoder({
         accessToken: this.accessToken,
         zoom: 18,
         flyTo: true,

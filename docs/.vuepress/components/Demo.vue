@@ -35,7 +35,7 @@
 
 <script>
 // mapbox and related geocoder and css files loaded in config.js head scripts
-import VueMapboxMapBase from '../../../src/VueMapboxMapBase'
+import VueMapboxMapBase from '../../../src/components/VueMapboxMapBase'
 
 export default {
   name: 'VueMapboxMap-Demo',
