@@ -75,11 +75,11 @@ export default {
   methods: {
     instanceMap () {
       if (this.accessToken) {
-        boomapboxgl.accessToken = this.accessToken
+        mapboxgl.accessToken = this.accessToken
       } else {
         console.warn('NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.')
       }
-      this.map = new boomapboxgl.Map({
+      this.map = new mapboxgl.Map({
         container: this.$refs.mapboxMapDiv,
         style: this.mapStyle,
         interactive: this.interactive,
@@ -93,7 +93,7 @@ export default {
         attributionControl: this.attributionControl
       })
       if (this.geocoder) {
-        this.map.addControl(new booMapboxGeocoder({
+        this.map.addControl(new MapboxGeocoder({
           accessToken: this.accessToken,
           zoom: 18,
           flyTo: true,
@@ -110,18 +110,15 @@ export default {
     }
   },
   mounted () {
-    console.log('nothing')
     if (typeof window.mapboxgl !== 'undefined' && typeof window.MapboxGeocoder !== 'undefined') {
-      console.log('no need to load')
       this.instanceMap()
     } else {
-      console.log('loading...')
       Promise.all([
         import('mapbox-gl'),
         import('@mapbox/mapbox-gl-geocoder')
       ]).then(([MapboxModule, MapboxGeocoder]) => {
-        window.boomapboxgl = MapboxModule.default
-        window.booMapboxGeocoder = MapboxGeocoder
+        window.mapboxgl = MapboxModule.default
+        window.MapboxGeocoder = MapboxGeocoder
         this.instanceMap()
       })
     }
