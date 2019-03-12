@@ -22,17 +22,15 @@
       </p>
     </div>
   </div>
-
 </template>
 
 <style scoped>
-
   #map-container {
+    position: relative;
     margin: 20px 0 20px 0;
     width: 100%;
     min-height: 400px;
   }
-
 </style>
 
 <script>
