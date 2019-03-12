@@ -25,7 +25,7 @@
 
 </template>
 
-<style scoped>
+<style>
 
   #map-container {
     margin: 20px 0 20px 0;

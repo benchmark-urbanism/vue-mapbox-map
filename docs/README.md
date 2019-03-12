@@ -29,11 +29,11 @@ For direct usage from a webpage, import the Mapbox GL JS and Mapbox Geocoder scr
 The map will collapse unless style parameters have been specified for the map `div`:
 ```html
 <style>
-  #map { position:absolute; top:0; bottom:0; width:100%; }
+  #map-container { position:absolute; top:0; bottom:0; width:100%; }
 </style>
 ```
 
-Web usage [example](test.html) and [source](https://github.com/cityseer/vue-mapbox-map/docs/.vuepress/public/test.html).
+Web usage [example](https://cityseer.github.io/vue-mapbox-map/test.html) and [source](https://github.com/cityseer/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
 
 
 Module Usage
@@ -44,7 +44,7 @@ Install via `yarn` or `npm`:
 yarn add vue-mapbox-map
 ```
 
-`vue-mapbox-map` will trigger installation of the `mapboxgl` and `MapboxGeocoder` dependencies, but their CSS files are not bundled inside the modules, so include these directly in the CSS:
+`vue-mapbox-map` will trigger installation of the `mapboxgl` and `MapboxGeocoder` dependencies, but their CSS files are not bundled inside the modules, so include these directly, e.g.:
 ```css
 @import url("https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css");
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css");
@@ -52,7 +52,7 @@ yarn add vue-mapbox-map
 
 Add a CSS style for the map div so that it does not collapse:
 ```css
-#map {
+#map-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,9 +66,8 @@ Import the component into the app and register the component:
 import VueMapboxMap from 'vue-mapbox-map'
 
 export default {
-  name: 'VueMapboxMap-Demo',
   components: {
-    'vue-mapbox-map': VueMapboxMap
+    VueMapboxMap
   },
   ...
 }
@@ -79,7 +78,7 @@ General Usage
 
 Once imported and registered as a component, the new `vue-mapbox-map` tag will be available for use from `html`:
 ```html
-<vue-mapbox-map id='map'
+<vue-mapbox-map id='map-container'
 :access-token='scene.accessToken'
 :interactive='false'
 :geocoder='false'
@@ -93,7 +92,7 @@ Once imported and registered as a component, the new `vue-mapbox-map` tag will b
 ></vue-mapbox-map>
 ```
 
-The props are reactive and can be controlled from the data context of the component:
+The map can be controlled from the dynamic data context of the component, e.g.:
 ```javascript
 // provide the corresponding data context
 data: {

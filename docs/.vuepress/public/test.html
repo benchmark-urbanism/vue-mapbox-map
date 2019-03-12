@@ -7,7 +7,6 @@
 
     <!-- fonts and icons -->
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway'>
-    <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <!-- vue -->
     <script src='https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.js'></script>
     <!-- mapbox -->
@@ -42,14 +41,6 @@
             width: 50%;
         }
 
-        pre code {
-            background-color: rgba(41, 67, 78, 0.1);
-            color: rgba(41, 67, 78, 0.9);
-            display: block;
-            font-family: 'Raleway', sans-serif;
-            font-size: 10pt;
-        }
-
     </style>
 </head>
 
@@ -66,43 +57,11 @@
                     :bearing='bearing'
     ></vue-mapbox-map>
     <div id='side-pane'>
-        <div align='center'>
-            <a href='https://cityseer.github.com/vue-mapbox-map/'>
-                <i class='fa fa-github fa-5x'></i>
-            </a>
-        </div>
         <h2 align='center'>
-            <a href='https://github.com/cityseer/vue-mapbox-map'>
+            <a href='https://cityseer.github.io/vue-mapbox-map/'>
                 vue-mapbox-map
             </a>
         </h2>
-        <br>
-        <p>
-            <a href='https://www.mapbox.com/mapbox-gl-js/api/' target='_blank'>
-                Mapbox GL JS
-            </a>
-            wrapped in a
-            <a href='https://vuejs.org/' target='_blank'>
-                Vue
-            </a>
-            module for dynamic maps.
-        </p>
-        <br>
-        <h3>
-            Add dynamic mapbox instances to your Vue components:
-        </h3>
-        <pre><code>
-    &lt;vue-mapbox-map id='map'
-                    :access-token='accessToken'
-                    :interactive='false'
-                    :geocoder='false'
-                    :lng='lng'
-                    :lat='lat'
-                    :zoom='zoom'
-                    :pitch='pitch'
-                    :bearing='bearing'
-    &gt;&lt;/vue-mapbox-map&gt;
-        </code></pre>
         <br>
         <h3>
             Scroll to see real-time map updates!
@@ -117,7 +76,8 @@
             Bearing: {{ bearing.toLocaleString() }}
         </p>
         <h4 align='center'>
-            <a href='https://github.com/cityseer/vue-mapbox-map/blob/master/docs/index.html'>
+            This page's
+            <a href='https://github.com/cityseer/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html'>
                 source
             </a>
         </h4>
