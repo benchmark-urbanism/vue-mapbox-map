@@ -38,6 +38,9 @@
 <script>
 // not packaged with bundled code
 import 'mapbox-gl/dist/mapbox-gl.css'
+// not in vuepress browser context, so add explicitly
+import mapboxgl from 'mapbox-gl'
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
 export default {
   name: 'VueMapboxMap-Demo',
