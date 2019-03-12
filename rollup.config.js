@@ -21,20 +21,12 @@ export default {
     {
       name: 'VueMapboxMap',
       file: pkg.main,
-      format: 'cjs', // CommonJS (for Node)
-      globals: {
-        'mapbox-gl': 'mapboxgl',
-        '@mapbox/mapbox-gl-geocoder': 'MapboxGeocoder'
-      }
+      format: 'cjs' // CommonJS (for Node)
     },
     {
       name: 'VueMapboxMap',
       file: pkg.module,
-      format: 'es', // ES module (for bundlers)
-      globals: {
-        'mapbox-gl': 'mapboxgl',
-        '@mapbox/mapbox-gl-geocoder': 'MapboxGeocoder'
-      }
+      format: 'es' // ES module (for bundlers)
     }
   ],
   plugins: [

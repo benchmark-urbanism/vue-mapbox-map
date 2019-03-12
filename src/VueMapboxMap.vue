@@ -110,18 +110,31 @@ export default {
     }
   },
   mounted () {
-    if (typeof window.mapboxgl !== 'undefined' && typeof window.MapboxGeocoder !== 'undefined') {
-      this.instanceMap()
-    } else {
-      console.info('Loading mapboxgl and @mapbox/mapbox-gl-geocoder')
-      Promise.all([
-        import('mapbox-gl'),
-        import('@mapbox/mapbox-gl-geocoder')
-      ]).then(([MapboxModule, MapboxGeocoder]) => {
-        window.mapboxgl = MapboxModule.default
-        window.MapboxGeocoder = MapboxGeocoder
+    // check if the mapbox and geocoder variables are available in the window
+    // e.g. using from web browser, in which case the scripts should be loaded in the head
+    // if using from a static SSR site such as vuepress then provide the relevant config.js head section
+    // this pattern prevents issues, e.g. with vuepress, where mapboxgl attempts to access the window scope before ready
+    if (typeof window.mapboxgl !== 'undefined') {
+      if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
         this.instanceMap()
+      } else {
+        import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
+          window.MapboxGeocoder = MapboxGeocoder
+          this.instanceMap()
+        })
+      }
+    } else {
+      import('mapbox-gl').then(MapboxModule => {
+        window.mapboxgl = MapboxModule.default
       })
+      if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
+        this.instanceMap()
+      } else {
+        import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
+          window.MapboxGeocoder = MapboxGeocoder
+          this.instanceMap()
+        })
+      }
     }
   },
   computed: {
