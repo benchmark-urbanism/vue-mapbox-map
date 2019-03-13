@@ -33,6 +33,13 @@ The map will collapse unless style parameters have been specified for the map `d
 </style>
 ```
 
+Register the component:
+```js
+components: {
+  'vue-mapbox-map': VueMapboxMap.default
+}
+```
+
 Web usage [example](https://cityseer.github.io/vue-mapbox-map/test.html) and [source](https://github.com/cityseer/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
 
 
@@ -44,7 +51,7 @@ Install via `yarn` or `npm`:
 yarn add vue-mapbox-map
 ```
 
-`vue-mapbox-map` will trigger installation of the `mapboxgl` and `MapboxGeocoder` dependencies, but their CSS files are not bundled inside the modules, so include these directly, e.g.:
+`vue-mapbox-map` will trigger installation of the `mapboxgl` and `MapboxGeocoder` dependencies, but their CSS files are not bundled inside the modules, so include these directly:
 ```css
 @import url("https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css");
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css");
@@ -55,7 +62,14 @@ Import the component into the app:
 import VueMapboxMap from 'vue-mapbox-map'
 ```
 
-Add a CSS style for the intended map div so that it does not collapse, e.g.:
+And register the component:
+```js
+components: {
+  'vue-mapbox-map': VueMapboxMap
+}
+```
+
+Add a CSS style for the intended map div so that it does not collapse:
 ```css
 #map-container {
   position: absolute;
@@ -69,14 +83,7 @@ Add a CSS style for the intended map div so that it does not collapse, e.g.:
 General Usage
 -------------
 
-Once imported, register the component, i.e.:
-```js
-components: {
-  'vue-mapbox-map': VueMapboxMap
-}
-```
- 
-After which, the `vue-mapbox-map` tag will be available for use from `html`:
+Once registered, the `vue-mapbox-map` tag will be available for use from `html`:
 ```html
 <vue-mapbox-map id='map-container'
 :access-token='scene.accessToken'
