@@ -15,7 +15,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "bundle": "vue-cli-service build --target lib --name vue-mapbox-map src/main.js",
+    "bundle": "vue-cli-service build --target lib --name VueMapboxMap src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
