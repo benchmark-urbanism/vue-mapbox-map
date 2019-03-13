@@ -15,7 +15,7 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
     <!-- vue-mapbox-map -->
-    <script src='https://unpkg.com/vue-mapbox-map@latest/dist/vue-mapbox-map.umd.js'></script>
+    <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
     <!--script src='../dist/vue-mapbox-map.umd.js'></script-->
 
     <style>
@@ -26,7 +26,7 @@
             font-family: 'Raleway', sans-serif;
         }
 
-        #map {
+        #map-container {
             position: fixed;
             top: 0;
             bottom: 0;
@@ -46,7 +46,7 @@
 
 <body>
 <div id='app'>
-    <vue-mapbox-map id='map'
+    <vue-mapbox-map id='map-container'
                     :access-token='accessToken'
                     :interactive='false'
                     :geocoder='false'

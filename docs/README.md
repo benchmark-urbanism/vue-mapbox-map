@@ -1,4 +1,4 @@
-vue-mapbox-map
+VueMapboxMap
 ==============
 
 A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) for dynamic maps.
@@ -12,18 +12,18 @@ Demo
 
 <Demo/>
 
-Web Usage
----------
+Setup for web usage
+-------------------
 
-For direct usage from a webpage, import the Mapbox GL JS and Mapbox Geocoder scripts and stylesheets, then import the `vue-mapbox-map` script. This will add `VueMapboxMap` to the global namespace, which in-turn depends on `mapboxgl` and `MapboxGeocoder`:
+For direct usage from a webpage, import the Mapbox GL JS and Mapbox Geocoder scripts and stylesheets, then import the `VueMapboxMap` script. This will add `VueMapboxMap` to the global namespace, which in-turn depends on `mapboxgl` and `MapboxGeocoder`:
 ```html
 <!-- mapbox -->
 <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'/>
 <link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'/>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
-<!-- vue-mapbox-map -->
-<script src='https://unpkg.com/vue-mapbox-map@latest/dist/vue-mapbox-map.umd.js'></script>
+<!-- VueMapboxMap -->
+<script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 ```
 
 The map will collapse unless style parameters have been specified for the map `div`:
@@ -36,8 +36,8 @@ The map will collapse unless style parameters have been specified for the map `d
 Web usage [example](https://cityseer.github.io/vue-mapbox-map/test.html) and [source](https://github.com/cityseer/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
 
 
-Module Usage
-------------
+Setup for module usage
+----------------------
 
 Install via `yarn` or `npm`:
 ```
@@ -50,7 +50,12 @@ yarn add vue-mapbox-map
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css");
 ```
 
-Add a CSS style for the map div so that it does not collapse:
+Import the component into the app:
+```js
+import VueMapboxMap from 'vue-mapbox-map'
+```
+
+Add a CSS style for the intended map div so that it does not collapse, e.g.:
 ```css
 #map-container {
   position: absolute;
@@ -61,22 +66,17 @@ Add a CSS style for the map div so that it does not collapse:
 }
 ```
 
-Import the component into the app and register the component:
-```javascript
-import VueMapboxMap from 'vue-mapbox-map'
-
-export default {
-  components: {
-    VueMapboxMap
-  },
-  ...
-}
-```
-
 General Usage
 -------------
 
-Once imported and registered as a component, the new `vue-mapbox-map` tag will be available for use from `html`:
+Once imported, register the component, i.e.:
+```js
+components: {
+  'vue-mapbox-map': VueMapboxMap
+}
+```
+ 
+After which, the `vue-mapbox-map` tag will be available for use from `html`:
 ```html
 <vue-mapbox-map id='map-container'
 :access-token='scene.accessToken'
@@ -93,7 +93,7 @@ Once imported and registered as a component, the new `vue-mapbox-map` tag will b
 ```
 
 The map can be controlled from the dynamic data context of the component, e.g.:
-```javascript
+```js
 // provide the corresponding data context
 data: {
   scene: {
@@ -110,7 +110,7 @@ data: {
 API
 ---
 The component's props / API is as follows:
-```javascript
+```js
 props: {
   // mapbox requires an access token
   'access-token': {
@@ -170,7 +170,7 @@ props: {
 ```
 
 A `@mapbox-ready` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent interaction with the map object, such as adding controls or events:
-```javascript
+```js
 methods: {
   setMap (map) {
     // the map object can be manipulated as normal, e.g. for adding events and controls
