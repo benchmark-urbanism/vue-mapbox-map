@@ -1,30 +1,29 @@
 <template>
-  <div ref='mapboxMapDiv'></div>
+  <div ref="mapboxMapDiv" />
 </template>
 
 <script>
 // imports are dynamic, see below
 export default {
   name: 'VueMapboxMap',
-  data () {
-    return {
-      map: null
-    }
-  },
   props: {
     // mapbox requires an access token
-    'access-token': {
+    // access as "access-token"
+    accessToken: {
       type: String,
-      required: false
+      required: false,
+      default: ''
     },
     // target map style, you can also load a local map style configuration
-    'map-style': {
+    // access as "map-style"
+    mapStyle: {
       type: [String, Object],
       default: 'mapbox://styles/mapbox/light-v9'
     },
     // whether to display the attribution control
     // this is required by mapbox unless you fulfill this requirement elsehow
-    'attribution-control': {
+    // access as "attribution-control"
+    attributionControl: {
       type: Boolean,
       default: true
     },
@@ -73,69 +72,9 @@ export default {
       default: 0
     }
   },
-  methods: {
-    instanceMap () {
-      if (this.accessToken) {
-        window.mapboxgl.accessToken = this.accessToken
-      } else {
-        console.warn('NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.')
-      }
-      this.map = new window.mapboxgl.Map({
-        container: this.$refs.mapboxMapDiv,
-        style: this.mapStyle,
-        interactive: this.interactive,
-        center: [
-          this.lng,
-          this.lat
-        ],
-        zoom: this.zoom,
-        bearing: this.bearing,
-        pitch: this.pitch,
-        attributionControl: this.attributionControl
-      })
-      if (this.geocoder) {
-        this.map.addControl(new window.MapboxGeocoder({
-          accessToken: this.accessToken,
-          zoom: 18,
-          flyTo: true,
-          // bias results closer to starting point
-          proximity: {
-            longitude: this.lng,
-            latitude: this.lat
-          }
-        }))
-      }
-      // return the map for reference from parent component
-      this.map.on('load', () => { this.$emit('mapbox-ready', this.map) })
-      this.map.on('remove', () => { this.$emit('mapbox-destroyed') })
-    }
-  },
-  mounted () {
-    // check if the mapbox and geocoder variables are available in the window
-    // e.g. using from web browser, in which case the scripts should be loaded in the head
-    // if using from a static SSR site such as vuepress then provide the relevant config.js head section
-    // this pattern prevents issues, e.g. with vuepress, where mapboxgl attempts to access the window scope before ready
-    if (typeof window.mapboxgl !== 'undefined') {
-      if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
-        this.instanceMap()
-      } else {
-        import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
-          window.MapboxGeocoder = MapboxGeocoder
-          this.instanceMap()
-        })
-      }
-    } else {
-      import('mapbox-gl').then(MapboxModule => {
-        window.mapboxgl = MapboxModule.default
-        if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
-          this.instanceMap()
-        } else {
-          import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
-            window.MapboxGeocoder = MapboxGeocoder
-            this.instanceMap()
-          })
-        }
-      })
+  data () {
+    return {
+      map: null
     }
   },
   computed: {
@@ -184,6 +123,65 @@ export default {
           this.map.flyTo(val)
         }
       }
+    }
+  },
+  mounted () {
+    // check if the mapbox and geocoder variables are available in the window
+    // e.g. using from web browser, in which case the scripts should be loaded in the head
+    // if using from a static SSR site such as vuepress then provide the relevant config.js head section
+    // this pattern prevents issues, e.g. with vuepress, where mapboxgl attempts to access the window scope before ready
+    if (typeof window.mapboxgl !== 'undefined') {
+      if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
+        this.instanceMap()
+      } else import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
+        window.MapboxGeocoder = MapboxGeocoder
+        this.instanceMap()
+      })
+    } else import('mapbox-gl').then(MapboxModule => {
+        window.mapboxgl = MapboxModule.default
+        if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
+          this.instanceMap()
+        } else import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
+            window.MapboxGeocoder = MapboxGeocoder
+            this.instanceMap()
+          })
+        })
+  },
+  methods: {
+    instanceMap () {
+      if (this.accessToken) {
+        window.mapboxgl.accessToken = this.accessToken
+      } else {
+        console.warn('NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.')
+      }
+      this.map = new window.mapboxgl.Map({
+        container: this.$refs.mapboxMapDiv,
+        style: this.mapStyle,
+        interactive: this.interactive,
+        center: [
+          this.lng,
+          this.lat
+        ],
+        zoom: this.zoom,
+        bearing: this.bearing,
+        pitch: this.pitch,
+        attributionControl: this.attributionControl
+      })
+      if (this.geocoder) {
+        this.map.addControl(new window.MapboxGeocoder({
+          accessToken: this.accessToken,
+          zoom: 18,
+          flyTo: true,
+          // bias results closer to starting point
+          proximity: {
+            longitude: this.lng,
+            latitude: this.lat
+          }
+        }))
+      }
+      // return the map for reference from parent component
+      this.map.on('load', () => { this.$emit('mapbox-ready', this.map) })
+      this.map.on('remove', () => { this.$emit('mapbox-destroyed') })
     }
   }
 }

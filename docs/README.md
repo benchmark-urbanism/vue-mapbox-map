@@ -26,20 +26,6 @@ For direct usage from a webpage, import the Mapbox GL JS and Mapbox Geocoder scr
 <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 ```
 
-The map will collapse unless style parameters have been specified for the map `div`:
-```html
-<style>
-  #map-container { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-```
-
-Register the component:
-```js
-components: {
-  'vue-mapbox-map': VueMapboxMap.default
-}
-```
-
 Web usage [example](https://cityseer.github.io/vue-mapbox-map/test.html) and [source](https://github.com/cityseer/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
 
 
@@ -57,17 +43,13 @@ yarn add vue-mapbox-map
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css");
 ```
 
-Import the component into the app:
+Import the component:
 ```js
 import VueMapboxMap from 'vue-mapbox-map'
 ```
 
-And register the component:
-```js
-components: {
-  'vue-mapbox-map': VueMapboxMap
-}
-```
+General Usage
+-------------
 
 Add a CSS style for the intended map div so that it does not collapse:
 ```css
@@ -80,8 +62,12 @@ Add a CSS style for the intended map div so that it does not collapse:
 }
 ```
 
-General Usage
--------------
+Register the component:
+```js
+components: {
+  'vue-mapbox-map': VueMapboxMap
+}
+```
 
 Once registered, the `vue-mapbox-map` tag will be available for use from `html`:
 ```html
@@ -104,7 +90,7 @@ The map can be controlled from the dynamic data context of the component, e.g.:
 // provide the corresponding data context
 data: {
   scene: {
-    accessToken: '<your-access-token>',
+    accessToken: '<your-accessToken>',
      lng: -73.984495,
      lat: 40.756027,
      zoom: 13,
@@ -120,14 +106,24 @@ The component's props / API is as follows:
 ```js
 props: {
   // mapbox requires an access token
-  'access-token': {
+  // access as "access-token"
+  accessToken: {
     type: String,
-    required: false
+    required: false,
+    default: ''
   },
   // target map style, you can also load a local map style configuration
-  'map-style': {
+  // access as "map-style"
+  mapStyle: {
     type: [String, Object],
     default: 'mapbox://styles/mapbox/light-v9'
+  },
+  // whether to display the attribution control
+  // this is required by mapbox unless you fulfill this requirement elsehow
+  // access as "attribution-control"
+  attributionControl: {
+    type: Boolean,
+    default: true
   },
   // whether map can be interacted with
   interactive: {
@@ -150,27 +146,27 @@ props: {
   },
   // longitude (dynamic)
   lng: {
-    type: Number,
+    type: [Number, String],
     required: true
   },
   // latitude (dynamic)
   lat: {
-    type: Number,
+    type: [Number, String],
     required: true
   },
   // zoom (dynamic)
   zoom: {
-    type: Number,
+    type: [Number, String],
     default: 13
   },
   // pitch (dynamic)
   pitch: {
-    type: Number,
+    type: [Number, String],
     default: 60
   },
   // bearing (dynamic)
   bearing: {
-    type: Number,
+    type: [Number, String],
     default: 0
   }
 }
