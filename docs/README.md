@@ -3,8 +3,8 @@ VueMapboxMap
 
 A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) for dynamic maps.
 
-::: tip Hint
-See the complementary [vue-mapbox-feature](https://github.com/cityseer/vue-mapbox-feature) repo for dynamic geoJSON features.
+::: tip
+See the complementary [vue-mapbox-feature](https://cityseer.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
 :::
 
 Demo
@@ -19,8 +19,9 @@ For direct usage from a webpage, import the Mapbox GL JS and Mapbox Geocoder scr
 ```html
 <!-- mapbox -->
 <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'/>
-<link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'/>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+<!-- mapboxGeocoder -- if required -->
+<link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'/>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
 <!-- VueMapboxMap -->
 <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
@@ -72,20 +73,20 @@ components: {
 Once registered, the `vue-mapbox-map` tag will be available for use from `html`:
 ```html
 <vue-mapbox-map id='map-container'
-:access-token='scene.accessToken'
-:interactive='false'
-:geocoder='false'
-:lng='scene.lng'
-:lat='scene.lat'
-:zoom='scene.zoom'
-:pitch='scene.pitch'
-:bearing='scene.bearing'
-@mapbox-ready='setMap'
-@mapbox-destroyed='unsetMap'
+  :access-token='scene.accessToken'
+  :interactive='false'
+  :geocoder='false'
+  :lng='scene.lng'
+  :lat='scene.lat'
+  :zoom='scene.zoom'
+  :pitch='scene.pitch'
+  :bearing='scene.bearing'
+  @mapbox-ready='setMap'
+  @mapbox-destroyed='unsetMap'
 ></vue-mapbox-map>
 ```
 
-The map can be controlled from the dynamic data context of the component, e.g.:
+The map can be controlled from the dynamic data context of the component:
 ```js
 // provide the corresponding data context
 data: {

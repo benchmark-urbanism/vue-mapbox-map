@@ -12,8 +12,10 @@
     <!-- mapbox -->
     <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'/>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-    <!-- vue-mapbox-map -->
-    <!--script src='../dist/VueMapboxMap.umd.js'></script-->
+    <!-- mapboxGeocoder -- if required -->
+    <link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'/>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
+    <!-- VueMapboxMap -->
     <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 
     <style>
@@ -84,11 +86,6 @@
 
 <script>
 
-// base variables for manipulation
-const baseZoom = 13
-const basePitch = 20
-const baseBearing = 0
-
 // Vue instance
 const app = new Vue({
   // DOM target element
@@ -97,24 +94,59 @@ const app = new Vue({
   components: {
     VueMapboxMap
   },
-  data: {
-    accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjamVoN25yYTQxMXBwMzNuc2ZkeGk5eGtzIn0.ZQNxwHhtZDBfsVNjDL0c7A',
-    lng: -73.982,
-    lat: 40.768,
-    zoom: baseZoom,
-    pitch: basePitch,
-    bearing: baseBearing
+  data () {
+    return {
+      computing: false,
+      accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjamVoN25yYTQxMXBwMzNuc2ZkeGk5eGtzIn0.ZQNxwHhtZDBfsVNjDL0c7A',
+      lng: -73.982,
+      lat: 40.768,
+      baseZoom: 13,
+      basePitch: 20,
+      baseBearing: 0,
+      offset: 0
+    }
+  },
+  methods: {
+    handleScroll () {
+      // https://developer.mozilla.org/en-US/docs/Web/Events/scroll#Example
+      if (!this.computing) {
+        // use RAF to throttle function
+        // use arrow function for "this" context
+        // NB - avoid calls that will reflow the page...!
+        window.requestAnimationFrame(() => {
+          // get offset
+          let off = Math.round(window.document.documentElement.scrollTop || document.body.scrollTop)
+          // normalise
+          off = off / (2000 - window.innerHeight)
+          if (off > 1) {
+            off = 1
+          }
+          this.offset = off
+          // reset
+          this.computing = false
+        })
+        this.computing = true
+      }
+    }
+  },
+  computed: {
+    zoom () {
+      return this.baseZoom + (this.offset * 5)
+    },
+    pitch () {
+      return this.basePitch + (this.offset * 30)
+    },
+    bearing () {
+      return this.baseBearing + (this.offset * 100)
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 })
-document.body.onscroll = function () {
-  // get offset
-  let offset = Math.round(window.document.documentElement.scrollTop || document.body.scrollTop)
-  // normalise
-  offset = offset / (2000 - window.innerHeight)
-  app.zoom = baseZoom + (offset * 5)
-  app.pitch = basePitch + (offset * 30)
-  app.bearing = baseBearing + (offset * 100)
-}
 </script>
 </body>
 </html>
