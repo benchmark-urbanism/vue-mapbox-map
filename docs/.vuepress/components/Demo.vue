@@ -7,7 +7,7 @@
                     :lat='lat'
                     :zoom='zoom'
                     :pitch='pitch'
-                    :bearing='bearing' />
+                    :bearing='bearing'></vue-mapbox-map>
     <div>
       <p>
         Zoom: {{ zoom.toLocaleString() }}
