@@ -15,14 +15,11 @@ Demo
 Setup for web usage
 -------------------
 
-For direct usage from a webpage, import the Mapbox GL JS and Mapbox Geocoder scripts and stylesheets, then import the `VueMapboxMap` script. This will add `VueMapboxMap` to the global namespace, which in-turn depends on `mapboxgl` and `MapboxGeocoder`:
+For direct usage from a webpage, import the Mapbox GL JS script and stylesheet, then import the `VueMapboxMap` script: this will make the `VueMapboxMap` component available in the browser:
 ```html
 <!-- mapbox -->
 <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'/>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-<!-- mapboxGeocoder -- if required -->
-<link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'/>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
 <!-- VueMapboxMap -->
 <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 ```
@@ -38,10 +35,9 @@ Install via `yarn` or `npm`:
 yarn add vue-mapbox-map
 ```
 
-`vue-mapbox-map` will trigger installation of the `mapboxgl` and `MapboxGeocoder` dependencies, but their CSS files are not bundled inside the modules, so include these directly:
+`vue-mapbox-map` will trigger installation of the `mapboxgl` dependency, but the Mapbox CSS file is not bundled, so include it directly:
 ```css
 @import url("https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css");
-@import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css");
 ```
 
 Import the component:
@@ -70,12 +66,11 @@ components: {
 }
 ```
 
-Once registered, the `vue-mapbox-map` tag will be available for use from `html`:
+Once registered, the `vue-mapbox-map` tag will be available for use:
 ```html
 <vue-mapbox-map id='map-container'
   :access-token='scene.accessToken'
   :interactive='false'
-  :geocoder='false'
   :lng='scene.lng'
   :lat='scene.lat'
   :zoom='scene.zoom'
@@ -131,11 +126,6 @@ props: {
     type: Boolean,
     default: true
   },
-  // whether to instance the geocoder
-  geocoder: {
-    type: Boolean,
-    default: false
-  },
   // whether to jump, ease, or fly for transitions
   transitionMode: {
     type: String,
@@ -170,22 +160,28 @@ props: {
     type: [Number, String],
     default: 0
   }
-}
+},
 ```
 
 A `@mapbox-ready` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent interaction with the map object, such as adding controls or events:
 ```js
 methods: {
   setMap (map) {
-    // the map object can be manipulated as normal, e.g. for adding events and controls
+    // the map object can be manipulated as directly
+    // e.g. for adding events and controls
     this.map = map
   }
 }
 ```
 
+::: tip Hint
+
+Other event listeners and map controls should be added to the returned map object directly.
+
+:::
+
 A `@mapbox-destroyed` event is similarly emitted when the map is destroyed.
 
-Other event listeners should be added to the returned map object directly.
 
 Additional Functionality
 ------------------------

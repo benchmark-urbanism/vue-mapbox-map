@@ -3,7 +3,6 @@
     <vue-mapbox-map id='map-container'
                     :access-token='accessToken'
                     :interactive='false'
-                    :geocoder='false'
                     :lng='lng'
                     :lat='lat'
                     :zoom='zoom'
@@ -33,7 +32,7 @@
 </style>
 
 <script>
-// mapbox and related geocoder and css files loaded in config.js head scripts
+// mapbox and related css files loaded in config.js head scripts
 import VueMapboxMap from '../../../src/components/VueMapboxMap'
 
 export default {

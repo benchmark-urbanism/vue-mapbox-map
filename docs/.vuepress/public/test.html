@@ -12,9 +12,6 @@
     <!-- mapbox -->
     <link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'/>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-    <!-- mapboxGeocoder -- if required -->
-    <link rel='stylesheet' type='text/css' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css'/>
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
     <!-- VueMapboxMap -->
     <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 
@@ -49,7 +46,6 @@
     <vue-mapbox-map id='map-container'
                     :access-token='accessToken'
                     :interactive='false'
-                    :geocoder='false'
                     :lng='lng'
                     :lat='lat'
                     :zoom='zoom'
