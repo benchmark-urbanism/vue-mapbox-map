@@ -4,7 +4,7 @@
   "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build --no-cache --debug docs",
+    "docs:build": "vuepress build docs",
     "bundle": "rollup -c",
     "lint": "vue-cli-service lint"
   },
