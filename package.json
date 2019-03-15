@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
   "scripts": {
     "docs:dev": "vuepress dev docs",
