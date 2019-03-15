@@ -1,5 +1,5 @@
 <template>
-  <div ref="mapboxMapDiv" />
+  <div ref="mapboxMapDiv"/>
 </template>
 
 <script>
@@ -133,19 +133,25 @@ export default {
     if (typeof window.mapboxgl !== 'undefined') {
       if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
         this.instanceMap()
-      } else import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
-        window.MapboxGeocoder = MapboxGeocoder
-        this.instanceMap()
-      })
-    } else import('mapbox-gl').then(MapboxModule => {
+      } else {
+        import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
+          window.MapboxGeocoder = MapboxGeocoder
+          this.instanceMap()
+        })
+      }
+    } else {
+      import('mapbox-gl').then(MapboxModule => {
         window.mapboxgl = MapboxModule.default
         if (!this.geocoder || window.MapboxGeocoder !== 'undefined') {
           this.instanceMap()
-        } else import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
+        } else {
+          import('@mapbox/mapbox-gl-geocoder').then(MapboxGeocoder => {
             window.MapboxGeocoder = MapboxGeocoder
             this.instanceMap()
           })
-        })
+        }
+      })
+    }
   },
   methods: {
     instanceMap () {

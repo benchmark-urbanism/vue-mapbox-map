@@ -2,7 +2,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue'
 import buble from 'rollup-plugin-buble'
-import { terser } from "rollup-plugin-terser";
+import { terser } from 'rollup-plugin-terser'
 
 // see https://github.com/rollup/rollup-starter-lib/blob/buble/rollup.config.js
 export default {

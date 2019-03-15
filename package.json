@@ -2,27 +2,27 @@
   "name": "vue-mapbox-map",
   "version": "0.9.1",
   "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
-  "homepage": "https://cityseer.github.io/vue-mapbox-map/",
-  "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "bundle": "rollup -c",
+    "lint": "vue-cli-service lint"
+  },
   "main": "src/main.js",
-  "license": "GPL-3.0",
   "files": [
     "dist/*",
     "src/*",
     "package.json",
     "LICENSE"
   ],
-  "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "bundle": "rollup -c",
-    "lint": "eslint --ext .js,.vue src/"
-  },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^3.1.4",
     "mapbox-gl": "^0.53.1"
   },
   "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "electron": "^4.0.8",
     "eslint": "^5.8.0",
@@ -37,19 +37,7 @@
     "vue-template-compiler": "^2.5.21",
     "vuepress": "^1.0.0-alpha.44"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "es6": true,
-      "commonjs": true
-    },
-    "extends": [
-      "plugin:vue/recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint",
-      "sourceType": "module"
-    }
-  }
+  "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
+  "homepage": "https://cityseer.github.io/vue-mapbox-map/",
+  "license": "GPL-3.0"
 }

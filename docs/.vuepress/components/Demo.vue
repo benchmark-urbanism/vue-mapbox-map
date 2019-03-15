@@ -8,8 +8,7 @@
                     :lat='lat'
                     :zoom='zoom'
                     :pitch='pitch'
-                    :bearing='bearing'></vue-mapbox-map>
-
+                    :bearing='bearing' />
     <div>
       <p>
         Zoom: {{ zoom.toLocaleString() }}
@@ -38,7 +37,7 @@
 import VueMapboxMap from '../../../src/components/VueMapboxMap'
 
 export default {
-  name: 'VueMapboxMap-Demo',
+  name: 'VueMapboxMapDemo',
   components: {
     VueMapboxMap
   },
