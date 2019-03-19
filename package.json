@@ -16,24 +16,24 @@
     "LICENSE"
   ],
   "dependencies": {
-    "mapbox-gl": "^0.53.1"
+    "mapbox-gl": "0.53.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.3",
-    "eslint-plugin-vue": "^5.0.0",
+    "@vue/cli-plugin-eslint": "3.5.1",
+    "@vue/cli-service": "3.5.1",
+    "@vue/eslint-config-standard": "4.0.0",
+    "babel-eslint": "10.0.1",
+    "eslint": "5.15.3",
+    "eslint-plugin-vue": "5.2.2",
     "rollup": "1.6.0",
     "rollup-plugin-buble": "0.19.6",
     "rollup-plugin-commonjs": "9.2.1",
     "rollup-plugin-node-resolve": "4.0.1",
-    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-terser": "4.0.4",
     "rollup-plugin-vue": "4.7.2",
     "vue": "2.6.8",
     "vue-template-compiler": "2.6.8",
-    "vuepress": "^1.0.0-alpha.44"
+    "vuepress": "1.0.0-alpha.44"
   },
   "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
   "homepage": "https://cityseer.github.io/vue-mapbox-map/",
