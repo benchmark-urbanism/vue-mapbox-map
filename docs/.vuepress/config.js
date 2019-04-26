@@ -7,10 +7,10 @@ module.exports = {
     ['link', {
       rel: 'stylesheet',
       type: 'text/css',
-      href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css'
+      href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css'
     }],
     ['script', {
-      src: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'
+      src: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'
     }]
   ],
   markdown: {
