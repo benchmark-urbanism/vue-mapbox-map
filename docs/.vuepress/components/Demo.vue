@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       computing: false,
-      accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjamVoN25yYTQxMXBwMzNuc2ZkeGk5eGtzIn0.ZQNxwHhtZDBfsVNjDL0c7A',
+      accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjazBkdDQ1bW0wYXEyM2RyejB4eW02a2xwIn0.IzZDyzAlR1sHwDvnEv7ouw',
       lng: -73.982,
       lat: 40.768,
       baseZoom: 13,
