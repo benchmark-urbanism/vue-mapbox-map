@@ -18,8 +18,8 @@ Setup for web usage
 For direct usage from a webpage, import the Mapbox GL JS script and stylesheet, then import the `VueMapboxMap` script: this will make the `VueMapboxMap` component available in the browser:
 ```html
 <!-- mapbox -->
-<link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css'/>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+<link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css'/>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js'></script>
 <!-- VueMapboxMap -->
 <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 ```
@@ -37,7 +37,7 @@ yarn add vue-mapbox-map
 
 `vue-mapbox-map` will trigger installation of the `mapboxgl` dependency, but the Mapbox CSS file is not bundled, so include it directly:
 ```css
-@import url("https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css");
 ```
 
 Import the component:
