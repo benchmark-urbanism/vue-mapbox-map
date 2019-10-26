@@ -86,15 +86,17 @@ Once registered, the `vue-mapbox-map` tag will be available for use:
 The map can be controlled from the dynamic data context of the component:
 ```js
 // provide the corresponding data context
-data: {
-  scene: {
-    accessToken: '<your-accessToken>',
-     lng: -73.984495,
-     lat: 40.756027,
-     zoom: 13,
-     pitch: 20,
-     bearing: 0
-  }
+  data () {
+    return {
+        scene: {
+            accessToken: '<your-accessToken>',
+             lng: -73.984495,
+             lat: 40.756027,
+             zoom: 13,
+             pitch: 20,
+             bearing: 0
+          }
+    }
 }
 ```
 
