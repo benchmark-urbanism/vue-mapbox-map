@@ -1,6 +1,6 @@
 {
   "name": "vue-mapbox-map",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
   "scripts": {
     "lint": "vue-cli-service lint",
@@ -16,7 +16,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "mapbox-gl": "1.4.0"
+    "mapbox-gl": "1.5.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.11.0",
