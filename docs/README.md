@@ -184,4 +184,4 @@ Other event listeners and map controls should be added to the returned map objec
 
 :::
 
-A `@mapbox-destroyed` event is similarly emitted when the map is destroyed.
+A `@mapbox-destroyed` event is emitted when the map is destroyed.
