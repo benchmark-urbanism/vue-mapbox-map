@@ -167,7 +167,7 @@ props: {
 },
 ```
 
-A `@mapbox-ready` event is emitted when the map is instanced, and will return the map object. You can then use this for subsequent interaction with the map object, such as adding controls or events:
+A `@mapbox-ready` event, with the map object as the parameter, is emitted when the map is instanced. This information can be used for subsequent interaction with the map object, such as adding controls or events:
 ```js
 methods: {
   setMap (map) {
