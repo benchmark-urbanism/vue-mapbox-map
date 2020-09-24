@@ -5,20 +5,20 @@
 <script>
 // imports are dynamic, see below
 export default {
-  name: "VueMapboxMap",
+  name: 'VueMapboxMap',
   props: {
     // mapbox requires an access token
     // access as "access-token"
     accessToken: {
       type: String,
       required: false,
-      default: ""
+      default: ''
     },
     // target map style, you can also load a local map style configuration
     // access as "map-style"
     mapStyle: {
       type: [String, Object],
-      default: "mapbox://styles/mapbox/light-v9"
+      default: 'mapbox://styles/mapbox/light-v9'
     },
     // whether to display the attribution control
     // this is required by mapbox unless you fulfill this requirement elsehow
@@ -36,9 +36,9 @@ export default {
     transitionMode: {
       type: String,
       required: false,
-      default: "jump",
+      default: 'jump',
       validator: function(value) {
-        return ["jump", "ease", "fly"].indexOf(value) !== -1;
+        return ['jump', 'ease', 'fly'].indexOf(value) !== -1
       }
     },
     // longitude (dynamic)
@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       map: null
-    };
+    }
   },
   computed: {
     mapScene() {
@@ -79,7 +79,7 @@ export default {
         zoom: this.zoom,
         bearing: this.bearing,
         pitch: this.pitch
-      };
+      }
     }
   },
   watch: {
@@ -90,40 +90,34 @@ export default {
           // TODO: currently custom data layers are lost, but probably option to save them in future per
           // https://github.com/mapbox/mapbox-gl-js/issues/4006
           // currently this means that updating the style will undo any custom feature collections...
-          this.map.setStyle(val);
+          this.map.setStyle(val)
         } else {
-          console.error(`NOTE -> Unable to update map style to ${val}.`);
+          console.error(`NOTE -> Unable to update map style to ${val}.`)
         }
       }
     },
     mapScene(val) {
       if (val) {
         if (!this.map) {
-          console.error("NOTE -> Map object not set");
-          return;
+          console.error('NOTE -> Map object not set')
+          return
         }
         if (val.pitch < 0 || val.pitch > 60) {
-          console.error(
-            `NOTE -> Unable to update pitch to ${
-              val.pitch
-            }. Exceeds permitted range.`
-          );
-          return;
+          console.error(`NOTE -> Unable to update pitch to ${val.pitch}. Exceeds permitted range.`)
+          return
         }
         if (val.bearing < 0 || val.bearing > 360) {
           console.error(
-            `NOTE -> Unable to update bearing to ${
-              val.bearing
-            }. Exceeds permitted range.`
-          );
-          return;
+            `NOTE -> Unable to update bearing to ${val.bearing}. Exceeds permitted range.`
+          )
+          return
         }
-        if (this.transitionMode === "jump") {
-          this.map.jumpTo(val);
-        } else if (this.transitionMode === "ease") {
-          this.map.easeTo(val);
-        } else if (this.transitionMode === "fly") {
-          this.map.flyTo(val);
+        if (this.transitionMode === 'jump') {
+          this.map.jumpTo(val)
+        } else if (this.transitionMode === 'ease') {
+          this.map.easeTo(val)
+        } else if (this.transitionMode === 'fly') {
+          this.map.flyTo(val)
         }
       }
     }
@@ -133,23 +127,23 @@ export default {
     // e.g. using from web browser, in which case the scripts should be loaded in the head
     // if using from a static SSR site such as vuepress then provide the relevant config.js head section
     // this pattern prevents issues, e.g. with vuepress, where mapboxgl attempts to access the window scope before ready
-    if (typeof window.mapboxgl !== "undefined") {
-      this.instanceMap();
+    if (typeof window.mapboxgl !== 'undefined') {
+      this.instanceMap()
     } else {
-      import("mapbox-gl").then(MapboxModule => {
-        window.mapboxgl = MapboxModule.default;
-        this.instanceMap();
-      });
+      import('mapbox-gl').then(MapboxModule => {
+        window.mapboxgl = MapboxModule.default
+        this.instanceMap()
+      })
     }
   },
   methods: {
     instanceMap() {
       if (this.accessToken) {
-        window.mapboxgl.accessToken = this.accessToken;
+        window.mapboxgl.accessToken = this.accessToken
       } else {
         console.warn(
-          "NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map."
-        );
+          'NOTE -> No access token has been provided. If using Mapbox hosted tiles then this omission may break your map.'
+        )
       }
       this.map = new window.mapboxgl.Map({
         container: this.$refs.mapboxMapDiv,
@@ -160,15 +154,15 @@ export default {
         bearing: this.bearing,
         pitch: this.pitch,
         attributionControl: this.attributionControl
-      });
+      })
       // return the map for reference from parent component
-      this.map.on("load", () => {
-        this.$emit("mapbox-ready", this.map);
-      });
-      this.map.on("remove", () => {
-        this.$emit("mapbox-destroyed");
-      });
+      this.map.on('load', () => {
+        this.$emit('mapbox-ready', this.map)
+      })
+      this.map.on('remove', () => {
+        this.$emit('mapbox-destroyed')
+      })
     }
   }
-};
+}
 </script>
