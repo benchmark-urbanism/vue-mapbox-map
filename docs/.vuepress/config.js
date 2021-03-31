@@ -1,17 +1,23 @@
 module.exports = {
-  base: '/vue-mapbox-map/',  // must match github pages publish URL
+  base: '/vue-mapbox-map/', // must match github pages publish URL
   title: 'vue-mapbox-map',
   description: 'A Vue component for dynamic Mapbox GL JS maps!',
   // need to load these for mapbox maps
   head: [
-    ['link', {
-      rel: 'stylesheet',
-      type: 'text/css',
-      href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css'
-    }],
-    ['script', {
-      src: 'https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'
-    }]
+    [
+      'link',
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
+      },
+    ],
+    [
+      'script',
+      {
+        src: 'https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js',
+      },
+    ],
   ],
   markdown: {
     anchor: true,
@@ -23,16 +29,16 @@ module.exports = {
     activeHeaderLinks: true,
     sidebarDepth: 1,
     sidebar: 'auto',
-    repo: 'cityseer/vue-mapbox-map',
+    repo: 'benchmark-urbanism/vue-mapbox-map',
     repoLabel: 'github',
-    docsRepo: 'cityseer/vue-mapbox-map',
+    docsRepo: 'benchmark-urbanism/vue-mapbox-map',
     // if your docs are not at the root of the repo:
     docsDir: 'docs',
     // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'gh-pages',
     serviceWorker: {
-      updatePopup: true
-    }
+      updatePopup: true,
+    },
   },
-  evergreen: true
+  evergreen: true,
 }
