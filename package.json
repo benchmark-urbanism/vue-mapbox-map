@@ -38,7 +38,7 @@
     "vue-template-compiler": "2.6.12",
     "vuepress": "1.5.4"
   },
-  "bugs": "https://github.com/cityseer/vue-mapbox-map/issues",
-  "homepage": "https://cityseer.github.io/vue-mapbox-map/",
+  "bugs": "https://github.com/benchmark-urbanism/vue-mapbox-map/issues",
+  "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
   "license": "GPL-3.0"
 }
