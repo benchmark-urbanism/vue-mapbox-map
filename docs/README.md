@@ -6,7 +6,7 @@ A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https:/
 This component wraps only what is necessary for dynamic updates and returns the map object. It leaves further configuration to conventional mapbox-gl paradigms on the principle that it is unnecessary (and needlessly convoluted) to wrap every last aspect of the mapbox-gl API into a vue component.
 
 ::: tip
-See the complementary [vue-mapbox-feature](https://cityseer.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
+See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
 :::
 
 Demo
@@ -26,7 +26,7 @@ For direct usage from a webpage, import the Mapbox GL JS script and stylesheet, 
 <script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
 ```
 
-Web usage [example](https://cityseer.github.io/vue-mapbox-map/test.html) and [source](https://github.com/cityseer/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
+Web usage [example](https://benchmark-urbanism.github.io/vue-mapbox-map/test.html) and [source](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
 
 
 Setup for module usage
