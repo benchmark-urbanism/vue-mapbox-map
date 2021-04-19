@@ -43,7 +43,7 @@
   <body>
     <div id="app">
       <div id="map-container">
-        <vue-mapbox-map
+        <VueMapboxMap
           v-if="mapInstance"
           :map="mapInstance"
           :lng="lng"
@@ -51,7 +51,7 @@
           :zoom="zoom"
           :pitch="pitch"
           :bearing="bearing"
-        ></vue-mapbox-map>
+        ></VueMapboxMap>
       </div>
       <div id="side-pane">
         <h2 align="center">
