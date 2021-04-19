@@ -3,17 +3,14 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [
-    'plugin:vue/recommended',
-    // this config loads eslint:recommended...
-    // then chains to eslint-config-prettier and eslint-config-prettier/vue
-    '@vue/prettier/recommended'
-  ],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  },
+  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:vue/recommended'],
+  plugins: ['prettier', 'vue'],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint'
+    ecmaVersion: 2020
+  },
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }
 }

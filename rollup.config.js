@@ -4,41 +4,31 @@ import vue from 'rollup-plugin-vue'
 import buble from 'rollup-plugin-buble'
 import { terser } from 'rollup-plugin-terser'
 
-// see https://github.com/rollup/rollup-starter-lib/blob/buble/rollup.config.js
 export default {
   input: 'src/main.js',
-  external: ['mapbox-gl'], // suppresses warnings about external modules
   output: [
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.umd.js',
-      format: 'umd', // browser friendly UMD build
-      globals: {
-        'mapbox-gl': 'mapboxgl'
-      }
-    },
-    {
-      name: 'VueMapboxMap',
-      file: 'dist/VueMapboxMap.common.js',
-      format: 'cjs', // CommonJS (for Node)
-      globals: {
-        'mapbox-gl': 'mapboxgl'
-      }
+      format: 'umd'
     },
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.esm.js',
-      format: 'esm', // ES module (for bundlers)
-      globals: {
-        'mapbox-gl': 'mapboxgl'
-      }
+      format: 'es'
+    },
+    {
+      name: 'VueMapboxMap',
+      file: 'dist/VueMapboxMap.min.js',
+      format: 'iife'
     }
   ],
   plugins: [
     resolve(),
     commonjs(),
     vue({
-      css: true
+      css: true,
+      compileTemplate: true
     }),
     buble({
       exclude: ['node_modules/**']

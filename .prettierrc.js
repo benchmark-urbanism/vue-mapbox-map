@@ -1,5 +1,9 @@
 module.exports = {
   printWidth: 100,
   semi: false,
-  singleQuote: true
+  singleQuote: true,
+  pugAttributeSeparator: 'none',
+  pugCommentPreserveSpaces: 'trim-all',
+  pugWrapAttributesThreshold: -1,
+  pugEmptyAttributes: 'as-is'
 }

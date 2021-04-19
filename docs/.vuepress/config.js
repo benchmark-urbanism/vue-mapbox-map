@@ -2,25 +2,8 @@ module.exports = {
   base: '/vue-mapbox-map/', // must match github pages publish URL
   title: 'vue-mapbox-map',
   description: 'A Vue component for dynamic Mapbox GL JS maps!',
-  // need to load these for mapbox maps
-  head: [
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css',
-      },
-    ],
-    [
-      'script',
-      {
-        src: 'https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js',
-      },
-    ],
-  ],
   markdown: {
-    anchor: true,
+    anchor: true
   },
   themeConfig: {
     lastUpdated: true,
@@ -37,8 +20,8 @@ module.exports = {
     // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'gh-pages',
     serviceWorker: {
-      updatePopup: true,
-    },
+      updatePopup: true
+    }
   },
-  evergreen: true,
+  evergreen: true
 }

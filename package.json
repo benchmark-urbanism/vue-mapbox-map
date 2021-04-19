@@ -1,44 +1,68 @@
 {
-  "name": "vue-mapbox-map",
-  "version": "0.13.0",
+  "name": "@benchmark-urbanism/vue-mapbox-map",
+  "version": "0.14.0",
   "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
-  "scripts": {
-    "lint": "vue-cli-service lint",
-    "bundle": "rollup -c",
-    "docs:build": "vuepress build docs",
-    "docs:dev": "vuepress dev docs"
+  "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benchmark-urbanism/vue-mapbox-map.git"
   },
-  "main": "src/main.js",
+  "author": "benchmark-urbanism",
+  "license": "MIT",
+  "keywords": [
+    "component",
+    "mapbox",
+    "maplibre",
+    "maps",
+    "maptiler",
+    "vector maps",
+    "pbf",
+    "vue"
+  ],
+  "bugs": "https://github.com/benchmark-urbanism/vue-mapbox-map/issues",
   "files": [
     "dist/*",
     "src/*",
     "package.json",
     "LICENSE"
   ],
-  "dependencies": {
-    "mapbox-gl": "1.12.0"
+  "main": "dist/VueMapboxMap.umd.js",
+  "module": "dist/VueMapboxMap.esm.js",
+  "unpkg": "dist/VueMapboxMap.min.js",
+  "browser": {
+    "./sfc": "src/components/VueMapboxMap.vue"
   },
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "bundle": "rollup -c",
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs"
+  },
+  "dependencies": {},
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^4.5.6",
-    "@vue/cli-service": "^4.5.6",
+    "@prettier/plugin-pug": "^1.13.5",
+    "@vue/cli-plugin-eslint": "^4.5.12",
+    "@vue/cli-service": "^4.5.12",
+    "@vue/compiler-sfc": "^3.0.11",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "10.1.0",
-    "eslint": "7.9.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "6.2.2",
-    "rollup": "2.28.2",
+    "eslint": "7.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "7.9.0",
+    "mapbox-gl": "^2.2.0",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0",
+    "rollup": "2.45.2",
     "rollup-plugin-buble": "0.19.8",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-terser": "7.0.2",
-    "rollup-plugin-vue": "5.0.0",
-    "stylelint": "^13.7.1",
-    "stylelint-config-standard": "^20.0.0",
+    "rollup-plugin-vue": "6.0.0",
+    "stylelint": "^13.12.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^21.0.0",
     "vue": "2.6.12",
     "vue-template-compiler": "2.6.12",
-    "vuepress": "1.5.4"
-  },
-  "bugs": "https://github.com/benchmark-urbanism/vue-mapbox-map/issues",
-  "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
-  "license": "GPL-3.0"
+    "vuepress": "1.8.2"
+  }
 }

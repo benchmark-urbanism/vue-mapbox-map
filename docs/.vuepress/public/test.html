@@ -8,14 +8,10 @@
     <!-- fonts and icons -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway" />
     <!-- vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <!-- mapbox -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
-    />
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet" />
     <!-- VueMapboxMap -->
     <script src="https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js"></script>
 
@@ -46,16 +42,17 @@
 
   <body>
     <div id="app">
-      <vue-mapbox-map
-        id="map-container"
-        :access-token="accessToken"
-        :interactive="false"
-        :lng="lng"
-        :lat="lat"
-        :zoom="zoom"
-        :pitch="pitch"
-        :bearing="bearing"
-      ></vue-mapbox-map>
+      <div #map-container>
+        <vue-mapbox-map
+          v-if="mapInstance"
+          :map="mapInstance"
+          :lng="lng"
+          :lat="lat"
+          :zoom="zoom"
+          :pitch="pitch"
+          :bearing="bearing"
+        ></vue-mapbox-map>
+      </div>
       <div id="side-pane">
         <h2 align="center">
           <a href="https://benchmark-urbanism.github.io/vue-mapbox-map/"> vue-mapbox-map </a>
@@ -83,20 +80,47 @@
         el: '#app',
         // Add vue-mapbox-map component
         components: {
-          VueMapboxMap,
+          VueMapboxMap
         },
         data() {
           return {
             computing: false,
+            mapInstance: null,
             accessToken:
-              'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjazBkdDQ1bW0wYXEyM2RyejB4eW02a2xwIn0.IzZDyzAlR1sHwDvnEv7ouw',
+              'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJja2lubnc4ZWcxNTI2MzJxajhsa3NxcWtxIn0.gg7J040GTgBNook7aNclMQ',
             lng: -73.982,
             lat: 40.768,
             baseZoom: 13,
             basePitch: 20,
             baseBearing: 0,
-            offset: 0,
+            offset: 0
           }
+        },
+        computed: {
+          zoom() {
+            return this.baseZoom + this.offset * 5
+          },
+          pitch() {
+            return this.basePitch + this.offset * 30
+          },
+          bearing() {
+            return this.baseBearing + this.offset * 100
+          }
+        },
+        mounted() {
+          window.mapboxgl.accessToken = this.accessToken
+          this.mapInstance = new mapboxgl.Map({
+            container: 'map-container',
+            style: 'mapbox://styles/mapbox/light-v9',
+            center: [this.lng, this.lat],
+            zoom: this.zoom,
+            bearing: this.bearing,
+            pitch: this.pitch
+          })
+          window.addEventListener('scroll', this.handleScroll)
+        },
+        destroyed() {
+          window.removeEventListener('scroll', this.handleScroll)
         },
         methods: {
           handleScroll() {
@@ -121,25 +145,8 @@
               })
               this.computing = true
             }
-          },
-        },
-        computed: {
-          zoom() {
-            return this.baseZoom + this.offset * 5
-          },
-          pitch() {
-            return this.basePitch + this.offset * 30
-          },
-          bearing() {
-            return this.baseBearing + this.offset * 100
-          },
-        },
-        mounted() {
-          window.addEventListener('scroll', this.handleScroll)
-        },
-        destroyed() {
-          window.removeEventListener('scroll', this.handleScroll)
-        },
+          }
+        }
       })
     </script>
   </body>

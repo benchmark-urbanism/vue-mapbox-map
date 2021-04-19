@@ -1,134 +1,113 @@
-VueMapboxMap
-==============
+# VueMapboxMap
 
-A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) for dynamic maps.
+A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) or [MapLibre GL](https://github.com/maplibre/maplibre-gl-js) for dynamic maps.
 
-This component wraps only what is necessary for dynamic updates and returns the map object. It leaves further configuration to conventional mapbox-gl paradigms on the principle that it is unnecessary (and needlessly convoluted) to wrap every last aspect of the mapbox-gl API into a vue component.
+In the spirit of keeping things light and not reinventing the wheel: this component wraps only what is necessary for dynamic updates.
 
 ::: tip
 See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
 :::
 
-Demo
-----
+## Demo
 
 <Demo/>
 
-Setup for web usage
--------------------
+## Setup for web usage
 
 For direct usage from a webpage, import the Mapbox GL JS script and stylesheet, then import the `VueMapboxMap` script: this will make the `VueMapboxMap` component available in the browser:
+
 ```html
 <!-- mapbox -->
-<link rel='stylesheet' type='text/css' href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css'/>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet" />
 <!-- VueMapboxMap -->
-<script src='https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js'></script>
+<script src="https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js"></script>
 ```
 
 Web usage [example](https://benchmark-urbanism.github.io/vue-mapbox-map/test.html) and [source](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
 
+## Setup for module usage
 
-Setup for module usage
-----------------------
+> See the documentation's [demo](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/components/Demo.vue) component for a complete example.
 
 Install via `yarn` or `npm`:
+
 ```
-yarn add vue-mapbox-map
+yarn add @benchmark-urbanism/vue-mapbox-map
 ```
 
-`vue-mapbox-map` will trigger installation of the `mapboxgl` dependency, but the Mapbox CSS file is not bundled, so include it directly:
-```css
-@import url("https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css");
-```
+## General Usage
 
-Import the component:
+Import the `vue-mapbox-map` component:
+
 ```js
 import VueMapboxMap from 'vue-mapbox-map'
 ```
 
-General Usage
--------------
-
-Add a CSS style for the intended map div so that it does not collapse:
-```css
-#map-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-```
-
 Register the component:
+
 ```js
 components: {
-  'vue-mapbox-map': VueMapboxMap
+  VueMapboxMap
 }
 ```
 
-Once registered, the `vue-mapbox-map` tag will be available for use:
+Once registered, the `vue-mapbox-map` tag will be available for use. Use a `v-if` directive to stall the component until the provided `mapbox-gl` or `maplibre-gl` instances are ready to roll.
+
 ```html
-<vue-mapbox-map id='map-container'
-  :access-token='scene.accessToken'
-  :interactive='false'
-  :lng='scene.lng'
-  :lat='scene.lat'
-  :zoom='scene.zoom'
-  :pitch='scene.pitch'
-  :bearing='scene.bearing'
-  @mapbox-ready='setMap'
-  @mapbox-destroyed='unsetMap'
-></vue-mapbox-map>
+<VueMapboxMap
+  v-if="mapInstance"
+  :map="mapInstance"
+  :lng="scene.lng"
+  :lat="scene.lat"
+  :zoom="scene.zoom"
+  :pitch="scene.pitch"
+  :bearing="scene.bearing"
+></VueMapboxMap>
 ```
 
-The map can be controlled from the dynamic data context of the component:
+A `mapbox-gl` or `maplibre-gl` instance must be provided to `vue-mapbox-map`: these should be installed and instanced in accordance with standard procedures. For example:
+
+```js
+mapboxgl.accessToken = this.accessToken
+this.mapInstance = new mapboxgl.Map({
+  container: 'map-container',
+  style: 'mapbox://styles/mapbox/light-v9',
+  center: [this.lng, this.lat],
+  zoom: this.zoom,
+  bearing: this.bearing,
+  pitch: this.pitch
+})
+```
+
+The `lng`, `lat`, `zoom`, `pitch`, and `bearing` props can then be updated dynamically from the data context of the component, for example:
+
 ```js
 // provide the corresponding data context
 data () {
   return {
+    mapInstance: null,
     scene: {
-      accessToken: '<your-accessToken>',
-      lng: -73.984495,
-      lat: 40.756027,
-      zoom: 13,
-      pitch: 20,
-      bearing: 0
+      lng: -73.982,
+      lat: 40.768,
+      baseZoom: 13,
+      basePitch: 20,
+      baseBearing: 0
     }
   }
 }
 ```
 
-API
----
+## API
+
 The component's props / API is as follows:
+
 ```js
 props: {
-  // mapbox requires an access token
-  // access as "access-token"
-  accessToken: {
-    type: String,
-    required: false,
-    default: ''
-  },
-  // target map style, you can also load a local map style configuration
-  // access as "map-style"
-  mapStyle: {
-    type: [String, Object],
-    default: 'mapbox://styles/mapbox/light-v9'
-  },
-  // whether to display the attribution control
-  // this is required by mapbox unless you fulfill this requirement elsehow
-  // access as "attribution-control"
-  attributionControl: {
-    type: Boolean,
-    default: true
-  },
-  // whether map can be interacted with
-  interactive: {
-    type: Boolean,
-    default: true
+  // a mapbox or maplibre instance
+  map: {
+    type: Object,
+    required: true
   },
   // whether to jump, ease, or fly for transitions
   transitionMode: {
@@ -166,22 +145,3 @@ props: {
   }
 },
 ```
-
-A `@mapbox-ready` event, with the map object as the parameter, is emitted when the map is instanced. This information can be used for subsequent interaction with the map object, such as adding controls or events:
-```js
-methods: {
-  setMap (map) {
-    // the map object can be manipulated as directly
-    // e.g. for adding events and controls
-    this.map = map
-  }
-}
-```
-
-::: tip Hint
-
-Other event listeners and map controls should be added to the returned map object directly.
-
-:::
-
-A `@mapbox-destroyed` event is emitted when the map is destroyed.

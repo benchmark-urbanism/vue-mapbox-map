@@ -1,49 +1,49 @@
-<template>
-  <div>
-    <vue-mapbox-map id='map-container'
-                    :access-token='accessToken'
-                    :interactive='false'
-                    :lng='lng'
-                    :lat='lat'
-                    :zoom='zoom'
-                    :pitch='pitch'
-                    :bearing='bearing' />
-    <div>
-      <p>
-        Zoom: {{ zoom.toLocaleString() }}
-      </p>
-      <p>
-        Pitch: {{ pitch.toLocaleString() }}
-      </p>
-      <p>
-        Bearing: {{ bearing.toLocaleString() }}
-      </p>
-    </div>
-  </div>
+<template lang="pug">
+div
+  div#map-container
+    ClientOnly
+      VueMapboxMap(
+        v-if="mapInstance"
+        :map="mapInstance"
+        :lng="lng"
+        :lat="lat"
+        :zoom="zoom"
+        :pitch="pitch"
+        :bearing="bearing"
+      )
+  div
+    p Zoom: {{ zoom.toLocaleString() }}
+    p Pitch: {{ pitch.toLocaleString() }}
+    p Bearing: {{ bearing.toLocaleString() }}
 </template>
 
-<style scoped>
-  #map-container {
-    position: relative;
-    margin: 20px 0 20px 0;
-    width: 100%;
-    min-height: 400px;
-  }
+<style scoped lang="postcss">
+#map-container {
+  position: relative;
+  margin: 20px 0 20px 0;
+  width: 100%;
+  height: 400px;
+  background-color: lightgray;
+}
 </style>
 
 <script>
 // mapbox and related css files loaded in config.js head scripts
 import VueMapboxMap from '../../../src/components/VueMapboxMap'
+import mapboxgl from 'mapbox-gl'
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 export default {
   name: 'VueMapboxMapDemo',
   components: {
     VueMapboxMap
   },
-  data () {
+  data() {
     return {
       computing: false,
-      accessToken: 'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJjazBkdDQ1bW0wYXEyM2RyejB4eW02a2xwIn0.IzZDyzAlR1sHwDvnEv7ouw',
+      mapInstance: null,
+      accessToken:
+        'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJja2lubnc4ZWcxNTI2MzJxajhsa3NxcWtxIn0.gg7J040GTgBNook7aNclMQ',
       lng: -73.982,
       lat: 40.768,
       baseZoom: 13,
@@ -52,8 +52,34 @@ export default {
       offset: 0
     }
   },
+  computed: {
+    zoom() {
+      return this.baseZoom + this.offset * 5
+    },
+    pitch() {
+      return this.basePitch + this.offset * 30
+    },
+    bearing() {
+      return this.baseBearing + this.offset * 100
+    }
+  },
+  mounted() {
+    mapboxgl.accessToken = this.accessToken
+    this.mapInstance = new mapboxgl.Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/light-v9',
+      center: [this.lng, this.lat],
+      zoom: this.zoom,
+      bearing: this.bearing,
+      pitch: this.pitch
+    })
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
   methods: {
-    handleScroll () {
+    handleScroll() {
       // https://developer.mozilla.org/en-US/docs/Web/Events/scroll#Example
       if (!this.computing) {
         // use RAF to throttle function
@@ -74,23 +100,6 @@ export default {
         this.computing = true
       }
     }
-  },
-  computed: {
-    zoom () {
-      return this.baseZoom + (this.offset * 5)
-    },
-    pitch () {
-      return this.basePitch + (this.offset * 30)
-    },
-    bearing () {
-      return this.baseBearing + (this.offset * 100)
-    }
-  },
-  mounted () {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
