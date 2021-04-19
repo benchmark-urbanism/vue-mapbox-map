@@ -13,7 +13,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet" />
     <!-- VueMapboxMap -->
-    <script src="https://unpkg.com/@benchmark-urbanism/vue-mapbox-map@0.14.0/dist/VueMapboxMap.min.js"></script>
+    <script src="https://unpkg.com/@benchmark-urbanism/vue-mapbox-map@latest/dist/VueMapboxMap.min.js"></script>
 
     <style>
       body {
@@ -43,7 +43,7 @@
   <body>
     <div id="app">
       <div id="map-container">
-        <VueMapboxMap
+        <vue-mapbox-map
           v-if="mapInstance"
           :map="mapInstance"
           :lng="lng"
@@ -51,7 +51,7 @@
           :zoom="zoom"
           :pitch="pitch"
           :bearing="bearing"
-        ></VueMapboxMap>
+        ></vue-mapbox-map>
       </div>
       <div id="side-pane">
         <h2 align="center">
@@ -80,7 +80,7 @@
         el: '#app',
         // Add vue-mapbox-map component
         components: {
-          VueMapboxMap
+          'vue-mapbox-map': VueMapboxMap
         },
         data() {
           return {
@@ -108,7 +108,7 @@
           }
         },
         mounted() {
-          window.mapboxgl.accessToken = this.accessToken
+          mapboxgl.accessToken = this.accessToken
           this.mapInstance = new mapboxgl.Map({
             container: 'map-container',
             style: 'mapbox://styles/mapbox/light-v9',

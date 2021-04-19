@@ -21,7 +21,7 @@ For direct usage from a webpage, import the Mapbox GL JS script and stylesheet, 
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet" />
 <!-- VueMapboxMap -->
-<script src="https://unpkg.com/vue-mapbox-map@latest/dist/VueMapboxMap.umd.js"></script>
+<script src="https://unpkg.com/@benchmark-urbanism/vue-mapbox-map@latest/dist/VueMapboxMap.min.js"></script>
 ```
 
 Web usage [example](https://benchmark-urbanism.github.io/vue-mapbox-map/test.html) and [source](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).

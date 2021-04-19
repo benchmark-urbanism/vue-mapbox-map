@@ -1,8 +1,6 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import commonjs from '@rollup/plugin-commonjs'
+import buble from '@rollup/plugin-buble'
 import vue from 'rollup-plugin-vue'
-import buble from 'rollup-plugin-buble'
-import { terser } from 'rollup-plugin-terser'
 
 export default {
   input: 'src/main.js',
@@ -10,21 +8,23 @@ export default {
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.umd.js',
-      format: 'umd'
+      format: 'umd',
+      exports: 'default'
     },
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.esm.js',
-      format: 'es'
+      format: 'esm',
+      exports: 'default'
     },
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.min.js',
-      format: 'iife'
+      format: 'iife',
+      exports: 'default'
     }
   ],
   plugins: [
-    resolve(),
     commonjs(),
     vue({
       css: true,
@@ -32,7 +32,6 @@ export default {
     }),
     buble({
       exclude: ['node_modules/**']
-    }),
-    terser()
+    })
   ]
 }

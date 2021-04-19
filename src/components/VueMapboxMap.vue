@@ -1,4 +1,3 @@
-// imports are dynamic, see below
 <script>
 export default {
   name: 'VueMapboxMap',
@@ -94,7 +93,7 @@ export default {
     }
   },
   render() {
-    return this.$scopedSlots.default({})
+    return this.$slots.default
   }
 }
 </script>

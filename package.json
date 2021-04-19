@@ -1,6 +1,6 @@
 {
   "name": "@benchmark-urbanism/vue-mapbox-map",
-  "version": "0.14.0",
+  "version": "0.14.8",
   "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
   "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
   "repository": {
@@ -41,6 +41,8 @@
   "dependencies": {},
   "devDependencies": {
     "@prettier/plugin-pug": "^1.13.5",
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^18.0.0",
     "@vue/cli-plugin-eslint": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
     "@vue/compiler-sfc": "^3.0.11",
@@ -53,16 +55,12 @@
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "rollup": "2.45.2",
-    "rollup-plugin-buble": "0.19.8",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-terser": "7.0.2",
     "rollup-plugin-vue": "6.0.0",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^21.0.0",
     "vue": "2.6.12",
-    "vue-template-compiler": "2.6.12",
+    "vue-template-compiler": "^2.6.12",
     "vuepress": "1.8.2"
   }
 }
