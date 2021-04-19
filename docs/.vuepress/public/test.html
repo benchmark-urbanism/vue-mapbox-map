@@ -110,7 +110,7 @@
         mounted() {
           window.mapboxgl.accessToken = this.accessToken
           this.mapInstance = new mapboxgl.Map({
-            container: '#map-container',
+            container: 'map-container',
             style: 'mapbox://styles/mapbox/light-v9',
             center: [this.lng, this.lat],
             zoom: this.zoom,
