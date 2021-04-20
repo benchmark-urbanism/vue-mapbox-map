@@ -12,8 +12,9 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@benchmark-urbanism'
-      - run: yarn
-      - run: yarn bundle
-      - run: yarn publish --access public
+      - run: |
+          yarn
+          yarn bundle
+          yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,11 +1,11 @@
 {
   "name": "@benchmark-urbanism/vue-mapbox-map",
-  "version": "0.14.9",
+  "version": "0.14.10",
   "description": "A minimalist Vue component wrapping Mapbox GL or MapLibre GL dynamic maps!",
   "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/benchmark-urbanism/vue-mapbox-map.git"
+    "url": "git@github.com:benchmark-urbanism/vue-mapbox-map.git"
   },
   "author": "benchmark-urbanism",
   "license": "MIT",
