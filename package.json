@@ -1,7 +1,7 @@
 {
   "name": "@benchmark-urbanism/vue-mapbox-map",
-  "version": "0.14.8",
-  "description": "A minimalist Vue component wrapping Mapbox GL JS for dynamic maps!",
+  "version": "0.14.9",
+  "description": "A minimalist Vue component wrapping Mapbox GL or MapLibre GL dynamic maps!",
   "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
     "maplibre",
     "maps",
     "maptiler",
-    "vector maps",
     "pbf",
     "vue"
   ],

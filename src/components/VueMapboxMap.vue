@@ -44,6 +44,16 @@ export default {
   },
   computed: {
     mapScene() {
+      if (this.pitch < 0 || this.pitch > 60) {
+        console.error(`NOTE -> Unable to update pitch to ${this.pitch}. Exceeds permitted range.`)
+        return null
+      }
+      if (this.bearing < 0 || this.bearing > 360) {
+        console.error(
+          `NOTE -> Unable to update bearing to ${this.bearing}. Exceeds permitted range.`
+        )
+        return null
+      }
       return {
         center: [this.lng, this.lat],
         zoom: this.zoom,
@@ -53,42 +63,29 @@ export default {
     }
   },
   watch: {
-    mapStyle: {
-      deep: true,
-      handler(val) {
-        if (val && this.map) {
-          // TODO: currently custom data layers are lost, but probably option to save them in future per
-          // https://github.com/mapbox/mapbox-gl-js/issues/4006
-          // currently this means that updating the style will undo any custom feature collections...
-          this.map.setStyle(val)
-        } else {
-          console.error(`NOTE -> Unable to update map style to ${val}.`)
-        }
-      }
-    },
-    mapScene(val) {
-      if (val) {
-        if (!this.map) {
-          console.error('NOTE -> Map object not set')
-          return
-        }
-        if (val.pitch < 0 || val.pitch > 60) {
-          console.error(`NOTE -> Unable to update pitch to ${val.pitch}. Exceeds permitted range.`)
-          return
-        }
-        if (val.bearing < 0 || val.bearing > 360) {
-          console.error(
-            `NOTE -> Unable to update bearing to ${val.bearing}. Exceeds permitted range.`
-          )
-          return
-        }
-        if (this.transitionMode === 'jump') {
-          this.map.jumpTo(val)
-        } else if (this.transitionMode === 'ease') {
-          this.map.easeTo(val)
-        } else if (this.transitionMode === 'fly') {
-          this.map.flyTo(val)
-        }
+    mapScene() {
+      this.updateMapState()
+    }
+  },
+  mounted() {
+    // style loaded seems to give more consistent results than checking for loaded
+    if (this.map.isStyleLoaded()) {
+      this.updateMapState()
+    } else {
+      this.map.on('style.load', () => {
+        this.updateMapState()
+      })
+    }
+  },
+  methods: {
+    updateMapState() {
+      if (!this.mapScene) return
+      if (this.transitionMode === 'jump') {
+        this.map.jumpTo(this.mapScene)
+      } else if (this.transitionMode === 'ease') {
+        this.map.easeTo(this.mapScene)
+      } else if (this.transitionMode === 'fly') {
+        this.map.flyTo(this.mapScene)
       }
     }
   },
