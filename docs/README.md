@@ -10,7 +10,9 @@ See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/
 
 ## Demo
 
+<ClientOnly>
 <Demo/>
+</ClientOnly>
 
 ## Setup for web usage
 
