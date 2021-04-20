@@ -40,7 +40,7 @@ yarn add @benchmark-urbanism/vue-mapbox-map
 
 ## General Usage
 
-Import the `vue-mapbox-map` component:
+Import the `VueMapboxMap` component:
 
 ```js
 import VueMapboxMap from '@benchmark-urbanism/vue-mapbox-map'
@@ -54,7 +54,7 @@ components: {
 }
 ```
 
-Once registered, the `vue-mapbox-map` tag will be available for use. Use a `v-if` directive to stall the component until the provided `mapbox-gl` or `maplibre-gl` instances are ready to roll.
+Once registered, the `VueMapboxMap` tag will be available for use. Use a `v-if` directive to stall the component until the provided `mapbox-gl` or `maplibre-gl` instances are ready to roll.
 
 ```html
 <VueMapboxMap
@@ -68,7 +68,7 @@ Once registered, the `vue-mapbox-map` tag will be available for use. Use a `v-if
 ></VueMapboxMap>
 ```
 
-A `mapbox-gl` or `maplibre-gl` instance must be provided to `vue-mapbox-map`: these should be installed and instanced in accordance with standard procedures. For example:
+A `mapbox-gl` or `maplibre-gl` instance must be provided: these should be installed and instanced in accordance with standard procedures. For example:
 
 ```js
 mapboxgl.accessToken = this.accessToken
