@@ -41,7 +41,7 @@ yarn add @benchmark-urbanism/vue-mapbox-map
 Import the `vue-mapbox-map` component:
 
 ```js
-import VueMapboxMap from 'vue-mapbox-map'
+import VueMapboxMap from '@benchmark-urbanism/vue-mapbox-map'
 ```
 
 Register the component:
