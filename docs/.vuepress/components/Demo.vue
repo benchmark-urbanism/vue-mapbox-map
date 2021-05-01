@@ -71,7 +71,8 @@ export default {
       center: [this.lng, this.lat],
       zoom: this.zoom,
       bearing: this.bearing,
-      pitch: this.pitch
+      pitch: this.pitch,
+      interactive: false
     })
     window.addEventListener('scroll', this.handleScroll)
   },
