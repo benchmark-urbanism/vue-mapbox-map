@@ -9,29 +9,29 @@ export default {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.umd.js',
       format: 'umd',
-      exports: 'default'
+      exports: 'default',
     },
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.esm.js',
       format: 'esm',
-      exports: 'default'
+      exports: 'default',
     },
     {
       name: 'VueMapboxMap',
       file: 'dist/VueMapboxMap.min.js',
       format: 'iife',
-      exports: 'default'
-    }
+      exports: 'default',
+    },
   ],
   plugins: [
     commonjs(),
     vue({
       css: true,
-      compileTemplate: true
+      compileTemplate: true,
     }),
     buble({
-      exclude: ['node_modules/**']
-    })
-  ]
+      exclude: ['node_modules/**'],
+    }),
+  ],
 }

@@ -36,7 +36,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 export default {
   name: 'VueMapboxMapDemo',
   components: {
-    VueMapboxMap
+    VueMapboxMap,
   },
   data() {
     return {
@@ -49,7 +49,7 @@ export default {
       baseZoom: 13,
       basePitch: 20,
       baseBearing: 0,
-      offset: 0
+      offset: 0,
     }
   },
   computed: {
@@ -61,7 +61,7 @@ export default {
     },
     bearing() {
       return this.baseBearing + this.offset * 100
-    }
+    },
   },
   mounted() {
     mapboxgl.accessToken = this.accessToken
@@ -72,7 +72,7 @@ export default {
       zoom: this.zoom,
       bearing: this.bearing,
       pitch: this.pitch,
-      interactive: false
+      interactive: false,
     })
     window.addEventListener('scroll', this.handleScroll)
   },
@@ -100,7 +100,7 @@ export default {
         })
         this.computing = true
       }
-    }
-  }
+    },
+  },
 }
 </script>

@@ -5,7 +5,7 @@ export default {
     // a mapbox or maplibre instance
     map: {
       type: Object,
-      required: true
+      required: true,
     },
     // whether to jump, ease, or fly for transitions
     transitionMode: {
@@ -14,32 +14,32 @@ export default {
       default: 'jump',
       validator: function(value) {
         return ['jump', 'ease', 'fly'].indexOf(value) !== -1
-      }
+      },
     },
     // longitude (dynamic)
     lng: {
       type: [Number, String],
-      required: true
+      required: true,
     },
     // latitude (dynamic)
     lat: {
       type: [Number, String],
-      required: true
+      required: true,
     },
     // zoom (dynamic)
     zoom: {
       type: [Number, String],
-      default: 13
+      default: 13,
     },
     // pitch (dynamic)
     pitch: {
       type: [Number, String],
-      default: 60
+      default: 60,
     },
     // bearing (dynamic)
     bearing: {
       type: [Number, String],
-      default: 0
+      default: 0,
     },
     // around (dynamic)
     around: {
@@ -47,8 +47,8 @@ export default {
       default: null,
       validator: function(value) {
         return value.length === 2
-      }
-    }
+      },
+    },
   },
   computed: {
     mapScene() {
@@ -58,7 +58,7 @@ export default {
       }
       if (this.bearing < 0 || this.bearing > 360) {
         console.error(
-          `NOTE -> Unable to update bearing to ${this.bearing}. Exceeds permitted range.`
+          `NOTE -> Unable to update bearing to ${this.bearing}. Exceeds permitted range.`,
         )
         return null
       }
@@ -67,14 +67,14 @@ export default {
         zoom: this.zoom,
         bearing: this.bearing,
         pitch: this.pitch,
-        around: this.around
+        around: this.around,
       }
-    }
+    },
   },
   watch: {
     mapScene() {
       this.updateMapState()
-    }
+    },
   },
   mounted() {
     // style loaded seems to give more consistent results than checking for loaded
@@ -96,10 +96,10 @@ export default {
       } else if (this.transitionMode === 'fly') {
         this.map.flyTo(this.mapScene)
       }
-    }
+    },
   },
   render() {
     return this.$slots.default
-  }
+  },
 }
 </script>
