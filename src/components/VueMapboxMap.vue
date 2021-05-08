@@ -40,6 +40,14 @@ export default {
     bearing: {
       type: [Number, String],
       default: 0
+    },
+    // around (dynamic)
+    around: {
+      type: Array,
+      default: null,
+      validator: function(value) {
+        return value.length === 2
+      }
     }
   },
   computed: {
@@ -58,7 +66,8 @@ export default {
         center: [this.lng, this.lat],
         zoom: this.zoom,
         bearing: this.bearing,
-        pitch: this.pitch
+        pitch: this.pitch,
+        around: this.around
       }
     }
   },
