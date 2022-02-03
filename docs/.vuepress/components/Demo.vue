@@ -3,8 +3,8 @@
 ClientOnly
   VueMapboxMap(
     :map='mapInstance'
-    :lng='lng'
-    :lat='lat'
+    :lng='scene.lng'
+    :lat='scene.lat'
     :zoom='zoom'
     :pitch='pitch'
     :bearing='bearing'
@@ -18,6 +18,7 @@ div
 <script setup>
 import { useWindowScroll, useWindowSize } from '@vueuse/core'
 import mapboxgl from 'mapbox-gl'
+import { computed, markRaw, onMounted, reactive, ref } from 'vue'
 
 import VueMapboxMap from '../../../src/components/VueMapboxMap.vue'
 
@@ -36,9 +37,9 @@ const scene = reactive({
   basePitch: 20,
   baseBearing: 0,
 })
-const zoom = computed(() => baseZoom + offset.value * 5)
-const pitch = computed(() => basePitch + offset.value * 30)
-const bearing = computed(() => baseBearing + offset.value * 100)
+const zoom = computed(() => scene.baseZoom + offset.value * 5)
+const pitch = computed(() => scene.basePitch + offset.value * 30)
+const bearing = computed(() => scene.baseBearing + offset.value * 100)
 mapboxgl.accessToken =
   'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJja2lubnc4ZWcxNTI2MzJxajhsa3NxcWtxIn0.gg7J040GTgBNook7aNclMQ'
 const mapInstance = ref(null)

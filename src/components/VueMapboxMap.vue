@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { markRaw, toRefs, watchEffect } from 'vue'
+import { computed, markRaw, toRefs, watchEffect } from 'vue'
 
 // props
 const props = defineProps({
@@ -57,31 +57,33 @@ const props = defineProps({
     },
   },
 })
-const { map, transitionMode, lng, lat, zoom, pitch, bearing } = toRefs(props)
+const { map, transitionMode, lng, lat, zoom, pitch, bearing, around } = toRefs(props)
 const mapInstance = markRaw(map.value)
+const refinePitch = computed(() => {
+  if (pitch.value < 0) return 0
+  if (pitch.value > 85) return 85
+  return pitch.value
+})
+const refineBearing = computed(() => {
+  if (bearing.value < 0) return 0
+  if (bearing.value > 360) return 360
+  return bearing.value
+})
 watchEffect(() => {
   if (!mapInstance) return
-  if (pitch < 0 || pitch > 60) {
-    console.error(`NOTE -> Unable to update pitch to ${pitch}. Exceeds permitted range.`)
-    return null
-  }
-  if (bearing < 0 || bearing > 360) {
-    console.error(`NOTE -> Unable to update bearing to ${bearing}. Exceeds permitted range.`)
-    return null
-  }
   const scene = {
-    center: [lng, lat],
-    zoom: zoom,
-    bearing: bearing,
-    pitch: pitch,
-    around: around,
+    center: [lng.value, lat.value],
+    zoom: zoom.value,
+    bearing: refineBearing.value,
+    pitch: refinePitch.value,
+    around: around.value,
   }
   if (!scene) return
-  if (transitionMode === 'jump') {
+  if (transitionMode.value === 'jump') {
     mapInstance.jumpTo(scene)
-  } else if (transitionMode === 'ease') {
+  } else if (transitionMode.value === 'ease') {
     mapInstance.easeTo(scene)
-  } else if (transitionMode === 'fly') {
+  } else if (transitionMode.value === 'fly') {
     mapInstance.flyTo(scene)
   }
 })

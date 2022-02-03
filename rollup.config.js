@@ -13,7 +13,7 @@ const rep = replace({
 export default [
   {
     input: 'src/main.js',
-    external: ['vue', 'animejs'],
+    external: ['vue'],
     output: {
       format: 'esm',
       file: 'dist/VueMapboxMap.esm.js',
@@ -23,7 +23,7 @@ export default [
   // SSR build.
   {
     input: 'src/main.js',
-    external: ['vue', 'animejs'],
+    external: ['vue'],
     output: {
       format: 'cjs',
       file: 'dist/VueMapboxMap.ssr.js',
