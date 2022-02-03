@@ -1,21 +1,61 @@
 <template lang="pug">
+#map-container
+ClientOnly
+  VueMapboxMap(
+    :map='mapInstance'
+    :lng='lng'
+    :lat='lat'
+    :zoom='zoom'
+    :pitch='pitch'
+    :bearing='bearing'
+  )
 div
-  div#map-container
-    ClientOnly
-      VueMapboxMap(
-        v-if="mapInstance"
-        :map="mapInstance"
-        :lng="lng"
-        :lat="lat"
-        :zoom="zoom"
-        :pitch="pitch"
-        :bearing="bearing"
-      )
-  div
-    p Zoom: {{ zoom.toLocaleString() }}
-    p Pitch: {{ pitch.toLocaleString() }}
-    p Bearing: {{ bearing.toLocaleString() }}
+  p Zoom: {{ zoom.toLocaleString() }}
+  p Pitch: {{ pitch.toLocaleString() }}
+  p Bearing: {{ bearing.toLocaleString() }}
 </template>
+
+<script setup>
+import { useWindowScroll, useWindowSize } from '@vueuse/core'
+import mapboxgl from 'mapbox-gl'
+
+import VueMapboxMap from '../../../src/components/VueMapboxMap.vue'
+
+import 'mapbox-gl/dist/mapbox-gl.css'
+
+const { x, y } = useWindowScroll()
+const { width, height } = useWindowSize()
+const offset = computed(() => {
+  let off = y.value / (2000 - height.value)
+  return off > 1 ? 1 : off
+})
+const scene = reactive({
+  lng: -73.982,
+  lat: 40.768,
+  baseZoom: 13,
+  basePitch: 20,
+  baseBearing: 0,
+})
+const zoom = computed(() => baseZoom + offset.value * 5)
+const pitch = computed(() => basePitch + offset.value * 30)
+const bearing = computed(() => baseBearing + offset.value * 100)
+mapboxgl.accessToken =
+  'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJja2lubnc4ZWcxNTI2MzJxajhsa3NxcWtxIn0.gg7J040GTgBNook7aNclMQ'
+const mapInstance = ref(null)
+onMounted(() => {
+  mapInstance.value = markRaw(
+    new mapboxgl.Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/light-v9',
+      center: [scene.lng, scene.lat],
+      zoom: scene.baseZoom,
+      pitch: scene.basePitch,
+      bearing: scene.baseBearing,
+      interactive: false,
+    })
+  )
+})
+</script>
 
 <style scoped lang="postcss">
 #map-container {
@@ -26,81 +66,3 @@ div
   background-color: lightgray;
 }
 </style>
-
-<script>
-// mapbox and related css files loaded in config.js head scripts
-import VueMapboxMap from '../../../src/components/VueMapboxMap'
-import mapboxgl from 'mapbox-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
-
-export default {
-  name: 'VueMapboxMapDemo',
-  components: {
-    VueMapboxMap,
-  },
-  data() {
-    return {
-      computing: false,
-      mapInstance: null,
-      accessToken:
-        'pk.eyJ1Ijoic2hvbmdvbG9sbyIsImEiOiJja2lubnc4ZWcxNTI2MzJxajhsa3NxcWtxIn0.gg7J040GTgBNook7aNclMQ',
-      lng: -73.982,
-      lat: 40.768,
-      baseZoom: 13,
-      basePitch: 20,
-      baseBearing: 0,
-      offset: 0,
-    }
-  },
-  computed: {
-    zoom() {
-      return this.baseZoom + this.offset * 5
-    },
-    pitch() {
-      return this.basePitch + this.offset * 30
-    },
-    bearing() {
-      return this.baseBearing + this.offset * 100
-    },
-  },
-  mounted() {
-    mapboxgl.accessToken = this.accessToken
-    this.mapInstance = new mapboxgl.Map({
-      container: 'map-container',
-      style: 'mapbox://styles/mapbox/light-v9',
-      center: [this.lng, this.lat],
-      zoom: this.zoom,
-      bearing: this.bearing,
-      pitch: this.pitch,
-      interactive: false,
-    })
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/scroll#Example
-      if (!this.computing) {
-        // use RAF to throttle function
-        // use arrow function for "this" context
-        // NB - avoid calls that will reflow the page...!
-        window.requestAnimationFrame(() => {
-          // get offset
-          let off = Math.round(window.document.documentElement.scrollTop || document.body.scrollTop)
-          // normalise
-          off = off / (2000 - window.innerHeight)
-          if (off > 1) {
-            off = 1
-          }
-          this.offset = off
-          // reset
-          this.computing = false
-        })
-        this.computing = true
-      }
-    },
-  },
-}
-</script>

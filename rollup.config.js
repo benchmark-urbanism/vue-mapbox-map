@@ -1,37 +1,45 @@
 import commonjs from '@rollup/plugin-commonjs'
-import buble from '@rollup/plugin-buble'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import vue from 'rollup-plugin-vue'
 
-export default {
-  input: 'src/main.js',
-  output: [
-    {
-      name: 'VueMapboxMap',
-      file: 'dist/VueMapboxMap.umd.js',
-      format: 'umd',
-      exports: 'default',
-    },
-    {
-      name: 'VueMapboxMap',
-      file: 'dist/VueMapboxMap.esm.js',
+const rep = replace({
+  values: {
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  },
+  preventAssignment: true,
+})
+
+export default [
+  {
+    input: 'src/main.js',
+    external: ['vue', 'animejs'],
+    output: {
       format: 'esm',
+      file: 'dist/VueMapboxMap.esm.js',
+    },
+    plugins: [rep, commonjs(), nodeResolve(), vue()],
+  },
+  // SSR build.
+  {
+    input: 'src/main.js',
+    external: ['vue', 'animejs'],
+    output: {
+      format: 'cjs',
+      file: 'dist/VueMapboxMap.ssr.js',
       exports: 'default',
     },
-    {
-      name: 'VueMapboxMap',
-      file: 'dist/VueMapboxMap.min.js',
+    plugins: [rep, commonjs(), nodeResolve(), vue({ template: { optimizeSSR: true } })],
+  },
+  // Browser build.
+  {
+    input: 'src/main.js',
+    output: {
       format: 'iife',
+      file: 'dist/VueMapboxMap.min.js',
       exports: 'default',
+      name: 'VueMapboxMap',
     },
-  ],
-  plugins: [
-    commonjs(),
-    vue({
-      css: true,
-      compileTemplate: true,
-    }),
-    buble({
-      exclude: ['node_modules/**'],
-    }),
-  ],
-}
+    plugins: [rep, commonjs(), nodeResolve(), vue()],
+  },
+]

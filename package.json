@@ -1,6 +1,6 @@
 {
   "name": "@benchmark-urbanism/vue-mapbox-map",
-  "version": "0.14.11",
+  "version": "1.0.0",
   "description": "A minimalist Vue component wrapping Mapbox GL or MapLibre GL dynamic maps!",
   "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
   "repository": {
@@ -25,40 +25,42 @@
     "package.json",
     "LICENSE"
   ],
-  "main": "dist/VueMapboxMap.umd.js",
   "module": "dist/VueMapboxMap.esm.js",
   "unpkg": "dist/VueMapboxMap.min.js",
   "browser": {
     "./sfc": "src/components/VueMapboxMap.vue"
   },
   "scripts": {
-    "lint": "vue-cli-service lint",
     "bundle": "rollup -c",
     "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs"
   },
   "dependencies": {},
   "devDependencies": {
-    "@prettier/plugin-pug": "^1.15.2",
-    "@rollup/plugin-buble": "^0.21.3",
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@vue/cli-plugin-eslint": "^4.5.13",
-    "@vue/cli-service": "^4.5.13",
-    "@vue/compiler-sfc": "^3.0.11",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "eslint": "7.26.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "7.9.0",
-    "mapbox-gl": "^2.2.0",
-    "pug": "^3.0.2",
-    "pug-plain-loader": "^1.1.0",
-    "rollup": "2.47.0",
+    "@prettier/plugin-pug": "1.19.2",
+    "@rollup/plugin-commonjs": "21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-replace": "3.0.1",
+    "@vue/compiler-sfc": "3.2.29",
+    "@vue/component-compiler-utils": "^3.3.0",
+    "@vue/eslint-config-prettier": "7.0.0",
+    "@vuepress/plugin-register-components": "1.9.7",
+    "@vueuse/core": "7.5.5",
+    "eslint": "8.8.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-vue": "8.4.0",
+    "mapbox-gl": "2.7.0",
+    "prettier": "2.5.1",
+    "pug": "3.0.2",
+    "pug-plain-loader": "1.1.0",
+    "rollup": "2.67.0",
     "rollup-plugin-vue": "6.0.0",
-    "stylelint": "^13.13.1",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "^22.0.0",
-    "vue": "2.6.12",
-    "vue-template-compiler": "^2.6.12",
-    "vuepress": "^1.8.2"
+    "stylelint": "14.3.0",
+    "stylelint-config-prettier": "9.0.3",
+    "stylelint-config-recommended-vue": "1.1.0",
+    "stylelint-config-standard": "24.0.0",
+    "vue": "3.2.29",
+    "vue-router": "^3.5.3",
+    "vuepress": "2.0.0-beta.35"
   }
 }

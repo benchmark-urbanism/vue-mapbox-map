@@ -3,11 +3,11 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:vue/recommended'],
-  plugins: ['prettier', 'vue'],
-  parser: 'vue-eslint-parser',
+  extends: ['plugin:vue/vue3-recommended', '@vue/prettier'],
+  plugins: ['prettier'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'vue/multi-word-component-names': 'off',
   },
 }

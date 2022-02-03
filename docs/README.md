@@ -2,7 +2,7 @@
 
 A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) or [MapLibre GL](https://github.com/maplibre/maplibre-gl-js) for dynamic maps.
 
-In the spirit of keeping things light and not reinventing the wheel: this component wraps only what is necessary for dynamic updates.
+In the spirit of keeping things light and not reinventing the wheel: this component wraps only what is necessary for dynamic updates. Use the map instance directly otherwise.
 
 ::: tip
 See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
@@ -14,21 +14,7 @@ See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/
 <Demo/>
 </ClientOnly>
 
-## Setup for web usage
-
-For direct usage from a webpage, import the Mapbox GL JS script and stylesheet, then import the `VueMapboxMap` script: this will make the `VueMapboxMap` component available in the browser:
-
-```html
-<!-- mapbox -->
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet" />
-<!-- VueMapboxMap -->
-<script src="https://unpkg.com/@benchmark-urbanism/vue-mapbox-map@latest/dist/VueMapboxMap.min.js"></script>
-```
-
-Web usage [example](https://benchmark-urbanism.github.io/vue-mapbox-map/test.html) and [source](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/public/test.html).
-
-## Setup for module usage
+## Setup
 
 > See the documentation's [demo](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/components/Demo.vue) component for a complete example.
 
@@ -46,19 +32,10 @@ Import the `VueMapboxMap` component:
 import VueMapboxMap from '@benchmark-urbanism/vue-mapbox-map'
 ```
 
-Register the component:
-
-```js
-components: {
-  VueMapboxMap
-}
-```
-
-Once registered, the `VueMapboxMap` tag will be available for use. Use a `v-if` directive to stall the component until the provided `mapbox-gl` or `maplibre-gl` instances are ready to roll.
+Once imported, the `VueMapboxMap` tag will be available for use:
 
 ```html
 <VueMapboxMap
-  v-if="mapInstance"
   :map="mapInstance"
   :lng="scene.lng"
   :lat="scene.lat"
@@ -68,36 +45,32 @@ Once registered, the `VueMapboxMap` tag will be available for use. Use a `v-if` 
 ></VueMapboxMap>
 ```
 
-A `mapbox-gl` or `maplibre-gl` instance must be provided: these should be installed and instanced in accordance with standard procedures. For example:
+A `mapbox-gl` or `maplibre-gl` instance must be provided: these should be installed and instanced in accordance with standard procedures. Reactive data can be used to update the `lng`, `lat`, `zoom`, `pitch`, and `bearing` dynamically from the data context of the component:
 
 ```js
-mapboxgl.accessToken = this.accessToken
-this.mapInstance = new mapboxgl.Map({
-  container: 'map-container',
-  style: 'mapbox://styles/mapbox/light-v9',
-  center: [this.lng, this.lat],
-  zoom: this.zoom,
-  bearing: this.bearing,
-  pitch: this.pitch
+// use reactive data for updating the map
+const scene = reactive({
+  lng: -73.982,
+  lat: 40.768,
+  zoom: 13,
+  pitch: 20,
+  bearing: 0,
 })
-```
-
-The `lng`, `lat`, `zoom`, `pitch`, and `bearing` props can then be updated dynamically from the data context of the component, for example:
-
-```js
-// provide the corresponding data context
-data () {
-  return {
-    mapInstance: null,
-    scene: {
-      lng: -73.982,
-      lat: 40.768,
-      baseZoom: 13,
-      basePitch: 20,
-      baseBearing: 0
-    }
-  }
-}
+// setup mapbox
+mapboxgl.accessToken = aToken
+const mapInstance = ref(null)
+onMounted(() => {
+  mapInstance.value = markRaw(
+    new mapboxgl.Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/light-v9',
+      center: [scene.lng, scene.lat],
+      zoom: scene.zoom,
+      pitch: scene.pitch,
+      interactive: false,
+    })
+  )
+})
 ```
 
 ## API
@@ -105,53 +78,51 @@ data () {
 The component's props / API is as follows:
 
 ```js
-props: {
-  // a mapbox or maplibre instance
-  map: {
-    type: Object,
-    required: true
+// a mapbox or maplibre instance
+map: {
+  type: Object,
+  default: () => {},
+},
+// whether to jump, ease, or fly for transitions
+transitionMode: {
+  type: String,
+  required: false,
+  default: 'jump',
+  validator: function (value) {
+    return ['jump', 'ease', 'fly'].indexOf(value) !== -1
   },
-  // whether to jump, ease, or fly for transitions
-  transitionMode: {
-    type: String,
-    required: false,
-    default: 'jump',
-    validator: function (value) {
-      return ['jump', 'ease', 'fly'].indexOf(value) !== -1
-    }
+},
+// longitude (dynamic)
+lng: {
+  type: [Number, String],
+  required: true,
+},
+// latitude (dynamic)
+lat: {
+  type: [Number, String],
+  required: true,
+},
+// zoom (dynamic)
+zoom: {
+  type: [Number, String],
+  default: 13,
+},
+// pitch (dynamic)
+pitch: {
+  type: [Number, String],
+  default: 60,
+},
+// bearing (dynamic)
+bearing: {
+  type: [Number, String],
+  default: 0,
+},
+// around (dynamic)
+around: {
+  type: Array,
+  default: null,
+  validator: function (value) {
+    return value.length === 2
   },
-  // longitude (dynamic)
-  lng: {
-    type: [Number, String],
-    required: true
-  },
-  // latitude (dynamic)
-  lat: {
-    type: [Number, String],
-    required: true
-  },
-  // zoom (dynamic)
-  zoom: {
-    type: [Number, String],
-    default: 13
-  },
-  // pitch (dynamic)
-  pitch: {
-    type: [Number, String],
-    default: 60
-  },
-  // bearing (dynamic)
-  bearing: {
-    type: [Number, String],
-    default: 0
-  },
-  // around (dynamic)
-  around: {
-    type: Array,
-    default: null,
-    validator: function(value) {
-      return value.length === 2
-    }
-  }
 },
 ```

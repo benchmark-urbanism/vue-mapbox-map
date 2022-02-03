@@ -1,27 +1,35 @@
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   base: '/vue-mapbox-map/', // must match github pages publish URL
   title: 'vue-mapbox-map',
   description: 'A Vue component for dynamic Mapbox GL JS maps!',
+  bundler: '@vuepress/bundler-vite',
   markdown: {
-    anchor: true
+    anchor: true,
   },
+  theme: '@vuepress/default',
   themeConfig: {
-    lastUpdated: true,
-    nav: [],
-    displayAllHeaders: false,
-    activeHeaderLinks: true,
-    sidebarDepth: 1,
-    sidebar: 'auto',
-    repo: 'benchmark-urbanism/vue-mapbox-map',
+    home: '/',
+    navbar: [],
+    darkMode: true,
+    repo: 'https://github.com/benchmark-urbanism/vue-mapbox-map',
     repoLabel: 'github',
-    docsRepo: 'benchmark-urbanism/vue-mapbox-map',
-    // if your docs are not at the root of the repo:
+    sidebar: 'auto',
+    sidebarDepth: 1,
     docsDir: 'docs',
-    // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'gh-pages',
-    serviceWorker: {
-      updatePopup: true
-    }
+    themePlugins: {
+      activeHeaderLinks: true,
+      backToTop: true,
+    },
   },
-  evergreen: true
+  plugins: [
+    [
+      '@vuepress/register-components',
+      {
+        componentsDir: path.resolve(__dirname, './components/'),
+      },
+    ],
+  ],
 }
