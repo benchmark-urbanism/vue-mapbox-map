@@ -25,6 +25,7 @@
     "package.json",
     "LICENSE"
   ],
+  "main": "dist/VueMapboxMap.umd.js",
   "module": "dist/VueMapboxMap.esm.js",
   "unpkg": "dist/VueMapboxMap.min.js",
   "browser": {
@@ -44,7 +45,8 @@
     "@vue/compiler-sfc": "3.2.29",
     "@vue/component-compiler-utils": "^3.3.0",
     "@vue/eslint-config-prettier": "7.0.0",
-    "@vuepress/plugin-register-components": "1.9.7",
+    "@vuepress/plugin-register-components": "^2.0.0-beta.35",
+    "@vuepress/utils": "^2.0.0-alpha.1",
     "@vueuse/core": "7.5.5",
     "eslint": "8.8.0",
     "eslint-plugin-prettier": "4.0.0",
@@ -60,7 +62,6 @@
     "stylelint-config-recommended-vue": "1.1.0",
     "stylelint-config-standard": "24.0.0",
     "vue": "3.2.29",
-    "vue-router": "^3.5.3",
     "vuepress": "2.0.0-beta.35"
   }
 }
