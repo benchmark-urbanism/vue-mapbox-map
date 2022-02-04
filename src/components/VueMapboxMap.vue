@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { computed, markRaw, toRefs, watchEffect } from 'vue'
+import { computed, toRefs, watchEffect } from 'vue'
 
 // props
 const props = defineProps({
@@ -57,8 +57,7 @@ const props = defineProps({
     },
   },
 })
-const { map, transitionMode, lng, lat, zoom, pitch, bearing, around } = toRefs(props)
-const mapInstance = markRaw(map.value)
+const { pitch, bearing, lng, lat, zoom, around, transitionMode } = toRefs(props)
 const refinePitch = computed(() => {
   if (pitch.value < 0) return 0
   if (pitch.value > 85) return 85
@@ -70,7 +69,7 @@ const refineBearing = computed(() => {
   return bearing.value
 })
 watchEffect(() => {
-  if (!mapInstance) return
+  if (!props.map) return
   const scene = {
     center: [lng.value, lat.value],
     zoom: zoom.value,
@@ -78,13 +77,12 @@ watchEffect(() => {
     pitch: refinePitch.value,
     around: around.value,
   }
-  if (!scene) return
   if (transitionMode.value === 'jump') {
-    mapInstance.jumpTo(scene)
+    props.map.jumpTo(scene)
   } else if (transitionMode.value === 'ease') {
-    mapInstance.easeTo(scene)
+    props.map.easeTo(scene)
   } else if (transitionMode.value === 'fly') {
-    mapInstance.flyTo(scene)
+    props.map.flyTo(scene)
   }
 })
 </script>

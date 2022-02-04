@@ -58,18 +58,15 @@ const scene = reactive({
 })
 // setup mapbox
 mapboxgl.accessToken = aToken
-const mapInstance = ref(null)
 onMounted(() => {
-  mapInstance.value = markRaw(
-    new mapboxgl.Map({
-      container: 'map-container',
-      style: 'mapbox://styles/mapbox/light-v9',
-      center: [scene.lng, scene.lat],
-      zoom: scene.zoom,
-      pitch: scene.pitch,
-      interactive: false,
-    })
-  )
+  mapInstance = new mapboxgl.Map({
+    container: 'map-container',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: [scene.lng, scene.lat],
+    zoom: scene.zoom,
+    pitch: scene.pitch,
+    interactive: false,
+  })
 })
 ```
 
