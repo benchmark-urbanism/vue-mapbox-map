@@ -5,7 +5,7 @@ A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https:/
 In the spirit of keeping things light and not reinventing the wheel: this component wraps only what is necessary for dynamic updates. Use the map instance directly otherwise.
 
 ::: tip
-See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
+`v1.0.0^` has been refactored for Vue 3. Use the previous `v0.14.11` version for Vue 2 projects.
 :::
 
 ## Demo
@@ -13,6 +13,10 @@ See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/
 <ClientOnly>
 <Demo/>
 </ClientOnly>
+
+::: tip
+See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
+:::
 
 ## Setup
 
