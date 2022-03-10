@@ -33,10 +33,10 @@
   },
   "scripts": {
     "bundle": "rollup -c",
-    "dev": "astro dev --project-root ./docs",
-    "build": "astro build --verbose --project-root ./docs",
-    "preview": "astro preview --project-root ./docs",
-    "check": "astro check --project-root ./docs"
+    "dev": "astro dev",
+    "build": "astro build --verbose",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "devDependencies": {
     "@astrojs/renderer-vue": "^0.4.0",

@@ -14,14 +14,13 @@ jobs:
           run_install: |
             - recursive: true
 
+      - run: npm bundle
+
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
           registry-url: 'https://registry.npmjs.org'
           scope: '@benchmark-urbanism'
 
-      - run: |
-          pnpm run bundle
-          pnpm publish --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
