@@ -9,13 +9,13 @@ export default {
   pages: './src/pages',
   renderers: ['@astrojs/renderer-vue'],
   buildOptions: {
-    site: 'https://benchmark-urbanism.github.io/',
+    site: 'https://vue-mapbox-map.web.app/',
     sitemap: true,
     pageUrlFormat: 'directory',
     drafts: false,
   },
   vite: {
-    base: '/vue-mapbox-map/',
+    base: '/',
   },
   devOptions: {},
   markdownOptions: {
