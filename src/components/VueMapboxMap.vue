@@ -5,8 +5,7 @@
 </template>
 
 <script setup>
-import { computed, markRaw, ref, toRefs, watchEffect } from 'vue'
-import { useThrottleFn } from '@vueuse/core'
+import { computed, toRefs, watchEffect } from 'vue'
 
 // props
 const props = defineProps({
@@ -58,79 +57,23 @@ const props = defineProps({
     },
   },
 })
-/*
-const emit = defineEmits([
-  'update:lng',
-  'update:lat',
-  'update:zoom',
-  'update:pitch',
-  'update:bearing',
-])
-*/
-const center = computed({
-  get() {
-    return [props.lng, props.lat]
-  },
-  set(value) {
-    // emit('update:lng', value.lng)
-    // emit('update:lat', value.lat)
-  },
+const center = computed(() => {
+  return { lng: props.lng, lat: props.lat }
 })
-const zoom = computed({
-  get() {
-    return props.zoom
-  },
-  set(value) {
-    // emit('update:zoom', value)
-  },
+const zoom = computed(() => props.zoom)
+const bearing = computed(() => {
+  if (props.bearing < 0) return 0
+  if (props.bearing > 360) return 360
+  return props.bearing
 })
-const bearing = computed({
-  get() {
-    if (props.bearing < 0) return 0
-    if (props.bearing > 360) return 360
-    return props.bearing
-  },
-  set(value) {
-    // emit('update:bearing', value)
-  },
-})
-const pitch = computed({
-  get() {
-    if (props.pitch < 0) return 0
-    if (props.pitch > 85) return 85
-    return props.pitch
-  },
-  set(value) {
-    // emit('update:pitch', value)
-  },
+const pitch = computed(() => {
+  if (props.pitch < 0) return 0
+  if (props.pitch > 85) return 85
+  return props.pitch
 })
 const { map } = toRefs(props)
-const mapStatic = computed(() => (map.value ? markRaw(map.value) : null))
-/*
-const updating = ref(false)
 watchEffect(() => {
-  if (!mapStatic.value) return
-  if (!updating.value) {
-    updating.value = true
-    mapStatic.value.on(
-      'move',
-      useThrottleFn(() => {
-        console.log('move')
-        const c = mapStatic.value.getCenter()
-        if (c.lat != center.value.lat || c.lng != center.value.lng) center.value = c
-        const z = mapStatic.value.getZoom()
-        if (z != zoom.value) zoom.value = z
-        const b = mapStatic.value.getBearing()
-        if (b != bearing.value) bearing.value = b
-        const p = mapStatic.value.getPitch()
-        if (p != pitch.value) pitch.value = p
-      }, 100)
-    )
-  }
-})
-*/
-watchEffect(() => {
-  if (!mapStatic.value) return
+  if (!map.value) return
   const scene = {
     center: center.value,
     zoom: zoom.value,
