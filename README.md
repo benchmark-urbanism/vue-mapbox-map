@@ -1,6 +1,6 @@
 # vue-mapbox-map
 
-[![publish package](https://github.com/benchmark-urbanism/vue-mapbox-map/actions/workflows/publish_package.yml/badge.svg)](https://github.com/benchmark-urbanism/vue-mapbox-map/actions/workflows/publish_package.yml)
+[![publish package](https://github.com/benchmark-urbanism/vue-mapbox-map/actions/workflows/publish_package.yml/badge.svg)](https://github.com/benchmark-urbanism/vue-mapbox-map/actions/workflows/publish_package.yml)[![deploy docs (merge)](https://github.com/benchmark-urbanism/vue-mapbox-map/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/benchmark-urbanism/vue-mapbox-map/actions/workflows/firebase-hosting-merge.yml)
 
 A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) or [MapLibre GL](https://github.com/maplibre/maplibre-gl-js) for dynamic maps.
 
