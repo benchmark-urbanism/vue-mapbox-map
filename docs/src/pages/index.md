@@ -25,7 +25,7 @@ In the spirit of keeping things light and not reinventing the wheel: this compon
 
 ## Setup
 
-> See the documentation's [demo](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/.vuepress/components/Demo.vue) component for a complete example.
+> See the documentation's [demo](https://github.com/benchmark-urbanism/vue-mapbox-map/blob/master/docs/src/components/Demo.vue) component for a complete example.
 
 Install via `yarn` or `npm`:
 
