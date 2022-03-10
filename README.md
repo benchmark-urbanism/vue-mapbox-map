@@ -6,4 +6,4 @@ A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https:/
 
 In the spirit of keeping things light and not reinventing the wheel: this component wraps only what is necessary for dynamic updates.
 
-[Documentation](https://benchmark-urbanism.github.io/vue-mapbox-map/)
+[Documentation](https://vue-mapbox-map.web.app/)
