@@ -1,7 +1,6 @@
 {
   "hosting": {
     "public": "./docs/dist",
-    "ignore": ["**", "!./docs/dist/**"],
     "headers": [
       {
         "source": "/**",
