@@ -1,6 +1,6 @@
 {
   "name": "@benchmark-urbanism/vue-mapbox-map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A minimalist Vue component wrapping Mapbox GL or MapLibre GL dynamic maps!",
   "homepage": "https://benchmark-urbanism.github.io/vue-mapbox-map/",
   "repository": {
@@ -49,6 +49,7 @@
     "@vicons/fa": "^0.12.0",
     "@vitejs/plugin-vue": "^2.2.4",
     "@vue/compiler-sfc": "^3.2.31",
+    "@vueuse/core": "^7.7.1",
     "astro": "^0.24.0-next.0",
     "autoprefixer": "10.4.2",
     "eslint": "8.10.0",
