@@ -1,23 +1,21 @@
+# mac
 .DS_Store
-node_modules
-/dist
+
+# Dev
+.idea/
+build/
 dist/
-*.cache
-*.temp
 
-# local env files
-.env.local
-.env.*.local
+# node modules and gridsome
+logs
+*.log
+node_modules/
+docs/node_modules/
+.cache
+.temp
 
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# firebase
+**/.firebase*
 
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# venv for bib conversion
+venv/

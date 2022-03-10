@@ -1,9 +1,5 @@
 module.exports = {
-  extends: [
-    'stylelint-config-recommended-vue',
-    'stylelint-config-standard',
-    'stylelint-config-prettier',
-  ],
+  extends: ['stylelint-config-recommended-vue', 'stylelint-prettier/recommended'],
   rules: {
     'selector-nested-pattern': '^&',
   },

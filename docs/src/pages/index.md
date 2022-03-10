@@ -1,22 +1,27 @@
+---
+layout: ../layouts/BaseLayout.astro
+setup: |
+  import RepoLink from '../components/RepoLink.vue'
+  import Demo from '../components/Demo.vue'
+---
+
+<RepoLink
+repoLink='https://github.com/benchmark-urbanism/vue-mapbox-map'
+repoText='vue-mapbox-map'/>
+
 # VueMapboxMap
 
 A minimalist [Vue](https://vuejs.org/) component wrapping [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api/) or [MapLibre GL](https://github.com/maplibre/maplibre-gl-js) for dynamic maps.
 
 In the spirit of keeping things light and not reinventing the wheel: this component wraps only what is necessary for dynamic updates. Use the map instance directly otherwise.
 
-::: tip
-`v1.0.0^` has been refactored for Vue 3. Use the previous `v0.14.11` version for Vue 2 projects.
-:::
+> `v1.0.0^` has been refactored for Vue 3. Use the previous `v0.14.11` version for Vue 2 projects.
+
+> See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
 
 ## Demo
 
-<ClientOnly>
-<Demo/>
-</ClientOnly>
-
-::: tip
-See the complementary [vue-mapbox-feature](https://benchmark-urbanism.github.io/vue-mapbox-feature/) repo for dynamic geoJSON features.
-:::
+<Demo client:only='vue' />
 
 ## Setup
 

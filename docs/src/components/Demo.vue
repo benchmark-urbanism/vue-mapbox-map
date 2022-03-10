@@ -1,6 +1,18 @@
 <template lang="pug">
-#map-container
-ClientOnly
+.bg-dark-grey.py-3.rounded.border-mid-grey
+  .text-center
+    div Scroll to see some map action!
+  #map-container.my-3.w-full.bg-theme(style='height: 400px; min-height: 400px; max-height: 400px')
+  .flex.justify-center
+    .flex.flex-initial.px-2
+      .flex-initial.self-end.px-2.font-medium Zoom:
+      .flex-initial.self-end.px-2.text-xl {{ zoom.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    .flex.flex-initial.px-2
+      .flex-initial.self-end.px-2.font-medium Pitch:
+      .flex-initial.self-end.px-2.text-xl {{ pitch.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    .flex.flex-initial.px-2
+      .flex-initial.self-end.px-2.font-medium Bearing:
+      .flex-initial.self-end.px-2.text-xl {{ bearing.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
   VueMapboxMap(
     :map='mapInstance'
     :lng='scene.lng'
@@ -9,20 +21,13 @@ ClientOnly
     :pitch='pitch'
     :bearing='bearing'
   )
-div
-  p Zoom: {{ zoom.toLocaleString() }}
-  p Pitch: {{ pitch.toLocaleString() }}
-  p Bearing: {{ bearing.toLocaleString() }}
 </template>
 
 <script setup>
 import { useWindowScroll, useWindowSize } from '@vueuse/core'
 import mapboxgl from 'mapbox-gl'
-import { computed, markRaw, onMounted, reactive, ref } from 'vue'
-
+import { computed, markRaw, onMounted, onUnmounted, reactive, ref } from 'vue'
 import VueMapboxMap from '../../../src/components/VueMapboxMap.vue'
-
-import 'mapbox-gl/dist/mapbox-gl.css'
 
 const { x, y } = useWindowScroll()
 const { width, height } = useWindowSize()
@@ -57,13 +62,3 @@ onMounted(() => {
   )
 })
 </script>
-
-<style scoped lang="postcss">
-#map-container {
-  position: relative;
-  margin: 20px 0 20px 0;
-  width: 100%;
-  height: 400px;
-  background-color: lightgray;
-}
-</style>
