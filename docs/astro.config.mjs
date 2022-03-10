@@ -2,11 +2,11 @@ import { s } from 'hastscript'
 
 export default {
   // all options are optional; these values are the defaults
-  projectRoot: './docs/',
-  public: './docs/public',
-  dist: './docs/dist',
-  src: './docs/src',
-  pages: './docs/src/pages',
+  projectRoot: './',
+  public: './public',
+  dist: './dist',
+  src: './src',
+  pages: './src/pages',
   renderers: ['@astrojs/renderer-vue'],
   buildOptions: {
     site: 'https://benchmark-urbanism.github.io/',
