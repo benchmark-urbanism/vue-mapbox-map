@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@astrojs/renderer-vue': ^0.4.0
-  '@benchmark-urbanism/remark-bibtex': 0.6.0
   '@fec/remark-a11y-emoji': 3.1.0
   '@prettier/plugin-pug': 1.19.2
   '@rollup/plugin-commonjs': ^21.0.2
@@ -30,14 +29,11 @@ specifiers:
   pug: 3.0.2
   pug-plain-loader: 1.1.0
   rehype-autolink-headings: 6.1.1
-  rehype-citation: 0.2.5
-  rehype-katex: 6.0.2
   rehype-sanitize: 5.0.1
   rehype-slug: 5.0.1
   rehype-stringify: 9.0.3
   remark-emoji: 3.0.2
   remark-frontmatter: 4.0.1
-  remark-math: 5.1.1
   remark-parse: 10.0.1
   remark-rehype: 10.1.0
   remark-smartypants: 2.0.0
@@ -58,7 +54,6 @@ dependencies:
 
 devDependencies:
   '@astrojs/renderer-vue': 0.4.0_vite@2.8.6
-  '@benchmark-urbanism/remark-bibtex': 0.6.0
   '@fec/remark-a11y-emoji': 3.1.0
   '@prettier/plugin-pug': 1.19.2_prettier@2.5.1
   '@rollup/plugin-commonjs': 21.0.2_rollup@2.70.0
@@ -86,14 +81,11 @@ devDependencies:
   pug: 3.0.2
   pug-plain-loader: 1.1.0_pug@3.0.2
   rehype-autolink-headings: 6.1.1
-  rehype-citation: 0.2.5
-  rehype-katex: 6.0.2
   rehype-sanitize: 5.0.1
   rehype-slug: 5.0.1
   rehype-stringify: 9.0.3
   remark-emoji: 3.0.2
   remark-frontmatter: 4.0.1
-  remark-math: 5.1.1
   remark-parse: 10.0.1
   remark-rehype: 10.1.0
   remark-smartypants: 2.0.0
@@ -473,73 +465,6 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@benchmark-urbanism/remark-bibtex/0.6.0:
-    resolution: {integrity: sha512-ugymFeJzgnm76lboJk5lGP+46nawesPPcmzBl27kawv+CaW6jk2Z/KJSLlCDzVL/P2eRdig0JQRT6aftKrrf/Q==}
-    dependencies:
-      '@citation-js/core': 0.5.4
-      '@citation-js/plugin-bibtex': 0.5.6_@citation-js+core@0.5.4
-      '@citation-js/plugin-csl': 0.5.5_@citation-js+core@0.5.4
-      unist-util-visit: 4.1.0
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
-  /@citation-js/core/0.5.4:
-    resolution: {integrity: sha512-84as1w5v24DDTlzaRUtEBWIcj5wNw9A2ELqQs2ngrbFsc1psg1FbmwJplZQDSsiJHt+MfO23+DRmtOXyn7qXsg==}
-    engines: {node: '>=10'}
-    dependencies:
-      '@citation-js/date': 0.5.1
-      '@citation-js/name': 0.4.2
-      isomorphic-fetch: 3.0.0
-      sync-fetch: 0.3.1
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
-  /@citation-js/date/0.5.1:
-    resolution: {integrity: sha512-1iDKAZ4ie48PVhovsOXQ+C6o55dWJloXqtznnnKy6CltJBQLIuLLuUqa8zlIvma0ZigjVjgDUhnVaNU1MErtZw==}
-    engines: {node: '>=10.0.0'}
-    dev: true
-
-  /@citation-js/name/0.4.2:
-    resolution: {integrity: sha512-brSPsjs2fOVzSnARLKu0qncn6suWjHVQtrqSUrnqyaRH95r/Ad4wPF5EsoWr+Dx8HzkCGb/ogmoAzfCsqlTwTQ==}
-    engines: {node: '>=6'}
-    dev: true
-
-  /@citation-js/plugin-bibjson/0.5.4_@citation-js+core@0.5.4:
-    resolution: {integrity: sha512-5KT7c8NOU7X2/JUgL8GmtOZFJtMFyCsLgoRBwpgDZ1pGdhE4H0/2292iPQ6SDyf2KxWAKXEy3DV5oMCqX9nzzA==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      '@citation-js/core': ^0.5.0-alpha.0
-    dependencies:
-      '@citation-js/core': 0.5.4
-      '@citation-js/date': 0.5.1
-      '@citation-js/name': 0.4.2
-    dev: true
-
-  /@citation-js/plugin-bibtex/0.5.6_@citation-js+core@0.5.4:
-    resolution: {integrity: sha512-VxKH1hgTwpiZ6A1NIq/wtovPqMspu1WQTt0x/09PulMM5qLecfv0tv/SIO1kd/azjmWVp2pOMoolKUMsRjEZSg==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      '@citation-js/core': ^0.5.0-alpha.0
-    dependencies:
-      '@citation-js/core': 0.5.4
-      '@citation-js/date': 0.5.1
-      '@citation-js/name': 0.4.2
-      moo: 0.5.1
-    dev: true
-
-  /@citation-js/plugin-csl/0.5.5_@citation-js+core@0.5.4:
-    resolution: {integrity: sha512-ytid/o/wpOU9OZ1gecibcfIP3YfFHhi0zamkVEbFp9Zwlud1Imyj96Mw8xTCgibVRhoQ4N7QJ/BToXIq+ON4DQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      '@citation-js/core': ^0.5.0-alpha.0
-    dependencies:
-      '@citation-js/core': 0.5.4
-      '@citation-js/date': 0.5.1
-      citeproc: 2.4.62
-    dev: true
-
   /@emmetio/abbreviation/2.2.3:
     resolution: {integrity: sha512-87pltuCPt99aL+y9xS6GPZ+Wmmyhll2WXH73gG/xpGcQ84DRnptBsI2r0BeIQ0EB/SQTOe2ANPqFqj3Rj5FOGA==}
     dependencies:
@@ -849,10 +774,6 @@ packages:
 
   /@types/json5/0.0.30:
     resolution: {integrity: sha512-sqm9g7mHlPY/43fcSNrCYfOeX9zkTTK+euO5E6+CVijSMm5tTjkVdwdqRkY3ljjIAf8679vps5jKUoJBCLsMDA==}
-    dev: true
-
-  /@types/katex/0.11.1:
-    resolution: {integrity: sha512-DUlIj2nk0YnJdlWgsFuVKcX27MLW0KbKmGVoUHmFr+74FYYNUDAaj9ZqTADvsbE8rfxuVmSFc7KczYn5Y09ozg==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -1306,10 +1227,6 @@ packages:
     resolution: {integrity: sha512-1ugUSr8BHXRnK23KfuYS+gVMC3LB8QGH9W1iGtDPsNWoQbgtXSExkBu2aDR4epiGWZOjZsj6lDl/N/AqqTC3UA==}
     dev: true
 
-  /base64-js/1.5.1:
-    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    dev: true
-
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
     dev: true
@@ -1347,13 +1264,6 @@ packages:
 
   /buffer-crc32/0.2.13:
     resolution: {integrity: sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=}
-    dev: true
-
-  /buffer/5.7.1:
-    resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
-    dependencies:
-      base64-js: 1.5.1
-      ieee754: 1.2.1
     dev: true
 
   /builtin-modules/3.2.0:
@@ -1470,10 +1380,6 @@ packages:
     resolution: {integrity: sha512-riT/3vI5YpVH6/qomlDnJow6TBee2PBKSEpx3O32EGPYbWGIRsIlGRms3Sm74wYE1JMo8RnO04Hb12+v1J5ICw==}
     dev: true
 
-  /citeproc/2.4.62:
-    resolution: {integrity: sha512-l3uFfSEwNZp/jlz/TpgyBs85kOww6VlQHbAth0cpbgOn6iulZd+QlFY43LrRelzcYt3FZHTZ3soDyd8lNmkqdw==}
-    dev: true
-
   /clean-stack/2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
@@ -1519,11 +1425,6 @@ packages:
     resolution: {integrity: sha512-G5yTt3KQN4Yn7Yk4ed73hlZ1evrFKXeUW3086p3PRFNp7m2vIjI6Pg+Kgb+oyzhd9F2qdcoj67+y3SdxL5XWsg==}
     dev: true
 
-  /commander/8.3.0:
-    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
-    engines: {node: '>= 12'}
-    dev: true
-
   /common-ancestor-path/1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
     dev: true
@@ -1558,14 +1459,6 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
-    dev: true
-
-  /cross-fetch/3.1.5:
-    resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
-    dependencies:
-      node-fetch: 2.6.7
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /cross-spawn/7.0.3:
@@ -2604,13 +2497,6 @@ packages:
       web-namespaces: 2.0.1
     dev: true
 
-  /hast-util-from-dom/4.1.0:
-    resolution: {integrity: sha512-0EMIYQVIhRfiC1LVdTsvM4yTY0rM/v63wwoYmOYV02mIOASYeQrfQekG4Jhge2kOAMaNFbvppUma47rbeWWE5Q==}
-    dependencies:
-      hastscript: 7.0.2
-      web-namespaces: 2.0.1
-    dev: true
-
   /hast-util-from-parse5/7.1.0:
     resolution: {integrity: sha512-m8yhANIAccpU4K6+121KpPP55sSl9/samzQSQGpb0mTExcNh2WlvjtMwSWFhg6uqD4Rr6Nfa8N6TMypQM51rzQ==}
     dependencies:
@@ -2699,14 +2585,6 @@ packages:
     resolution: {integrity: sha512-02AQ3vLhuH3FisaMM+i/9sm4OXGSq1UhOOCpTLLQtHdL3tZt7qil69r8M8iDkZYyC0HCFylcYoP+8IO7ddta1A==}
     dependencies:
       '@types/hast': 2.3.4
-    dev: true
-
-  /hast-util-to-text/3.1.1:
-    resolution: {integrity: sha512-7S3mOBxACy8syL45hCn3J7rHqYaXkxRfsX6LXEU5Shz4nt4GxdjtMUtG+T6G/ZLUHd7kslFAf14kAN71bz30xA==}
-    dependencies:
-      '@types/hast': 2.3.4
-      hast-util-is-element: 2.1.2
-      unist-util-find-after: 4.0.0
     dev: true
 
   /hast-util-whitespace/2.0.0:
@@ -3062,15 +2940,6 @@ packages:
     resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=}
     dev: true
 
-  /isomorphic-fetch/3.0.0:
-    resolution: {integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==}
-    dependencies:
-      node-fetch: 2.6.7
-      whatwg-fetch: 3.6.2
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
   /js-stringify/1.0.2:
     resolution: {integrity: sha1-Fzb939lyTyijaCrcYjCufk6Weds=}
     dev: true
@@ -3144,20 +3013,6 @@ packages:
     dependencies:
       is-promise: 2.2.2
       promise: 7.3.1
-    dev: true
-
-  /katex/0.13.24:
-    resolution: {integrity: sha512-jZxYuKCma3VS5UuxOx/rFV1QyGSl3Uy/i0kTJF3HgQ5xMinCQVF8Zd4bMY/9aI9b9A2pjIBOsjSSm68ykTAr8w==}
-    hasBin: true
-    dependencies:
-      commander: 8.3.0
-    dev: true
-
-  /katex/0.15.2:
-    resolution: {integrity: sha512-FfZ/f6f8bQdLmJ3McXDNTkKenQkoXkItpW0I9bsG2wgb+8JAY5bwpXFtI8ZVrg5hc1wo1X/UIhdkVMpok46tEQ==}
-    hasBin: true
-    dependencies:
-      commander: 8.3.0
     dev: true
 
   /kdbush/3.0.0:
@@ -3411,14 +3266,6 @@ packages:
       mdast-util-gfm-task-list-item: 1.0.1
     dev: true
 
-  /mdast-util-math/2.0.1:
-    resolution: {integrity: sha512-ZZtjyRwobsiVg4bY0Q5CzAZztpbjRIA7ZlMMb0PNkwTXOnJTUoHvzBhVG95LIuek5Mlj1l2P+jBvWviqW7G+0A==}
-    dependencies:
-      '@types/mdast': 3.0.10
-      longest-streak: 3.0.1
-      mdast-util-to-markdown: 1.3.0
-    dev: true
-
   /mdast-util-mdx-expression/1.2.0:
     resolution: {integrity: sha512-wb36oi09XxqO9RVqgfD+xo8a7xaNgS+01+k3v0GKW0X0bYbeBmUZz22Z/IJ8SuphVlG+DNgNo9VoEaUJ3PKfJQ==}
     dependencies:
@@ -3628,18 +3475,6 @@ packages:
       micromark-extension-gfm-task-list-item: 1.0.3
       micromark-util-combine-extensions: 1.0.0
       micromark-util-types: 1.0.2
-    dev: true
-
-  /micromark-extension-math/2.0.2:
-    resolution: {integrity: sha512-cFv2B/E4pFPBBFuGgLHkkNiFAIQv08iDgPH2HCuR2z3AUgMLecES5Cq7AVtwOtZeRrbA80QgMUk8VVW0Z+D2FA==}
-    dependencies:
-      '@types/katex': 0.11.1
-      katex: 0.13.24
-      micromark-factory-space: 1.0.0
-      micromark-util-character: 1.1.0
-      micromark-util-symbol: 1.0.1
-      micromark-util-types: 1.0.2
-      uvu: 0.5.3
     dev: true
 
   /micromark-extension-mdx-expression/1.0.3:
@@ -3911,10 +3746,6 @@ packages:
     hasBin: true
     dev: true
 
-  /moo/0.5.1:
-    resolution: {integrity: sha512-I1mnb5xn4fO80BH9BLcF0yLypy2UKl+Cb01Fu0hJRkJjlCRtxZMWkTdAtDd5ZqCOxtCkhmRwyI57vWT+1iZ67w==}
-    dev: true
-
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -3956,18 +3787,6 @@ packages:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
     dependencies:
       lodash: 4.17.21
-    dev: true
-
-  /node-fetch/2.6.7:
-    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
     dev: true
 
   /node-releases/2.0.2:
@@ -4579,48 +4398,6 @@ packages:
       unist-util-visit: 4.1.0
     dev: true
 
-  /rehype-citation/0.2.5:
-    resolution: {integrity: sha512-d4s4JPjjCqB7xqeIz7qf4oemhuTcFhYDvP57ciOwymLsaDiQhfOq6iJsnCBXmBP8a4O2EHDsQg5mwUTMIKBfRA==}
-    dependencies:
-      '@citation-js/core': 0.5.4
-      '@citation-js/date': 0.5.1
-      '@citation-js/name': 0.4.2
-      '@citation-js/plugin-bibjson': 0.5.4_@citation-js+core@0.5.4
-      '@citation-js/plugin-bibtex': 0.5.6_@citation-js+core@0.5.4
-      '@citation-js/plugin-csl': 0.5.5_@citation-js+core@0.5.4
-      citeproc: 2.4.62
-      cross-fetch: 3.1.5
-      hast-util-from-dom: 4.1.0
-      hast-util-from-parse5: 7.1.0
-      parse5: 6.0.1
-      unified: 10.1.2
-      unist-util-visit: 4.1.0
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
-  /rehype-katex/6.0.2:
-    resolution: {integrity: sha512-C4gDAlS1+l0hJqctyiU64f9CvT00S03qV1T6HiMzbSuLBgWUtcqydWHY9OpKrm0SpkK16FNd62CDKyWLwV2ppg==}
-    dependencies:
-      '@types/hast': 2.3.4
-      '@types/katex': 0.11.1
-      hast-util-to-text: 3.1.1
-      katex: 0.15.2
-      rehype-parse: 8.0.4
-      unified: 10.1.2
-      unist-util-remove-position: 4.0.1
-      unist-util-visit: 4.1.0
-    dev: true
-
-  /rehype-parse/8.0.4:
-    resolution: {integrity: sha512-MJJKONunHjoTh4kc3dsM1v3C9kGrrxvA3U8PxZlP2SjH8RNUSrb+lF7Y0KVaUDnGH2QZ5vAn7ulkiajM9ifuqg==}
-    dependencies:
-      '@types/hast': 2.3.4
-      hast-util-from-parse5: 7.1.0
-      parse5: 6.0.1
-      unified: 10.1.2
-    dev: true
-
   /rehype-raw/6.1.1:
     resolution: {integrity: sha512-d6AKtisSRtDRX4aSPsJGTfnzrX2ZkHQLE5kiUuGOeEoLpbEulFF4hj0mLPbsa+7vmguDKOVVEQdHKDSwoaIDsQ==}
     dependencies:
@@ -4681,15 +4458,6 @@ packages:
       '@types/mdast': 3.0.10
       mdast-util-gfm: 2.0.0
       micromark-extension-gfm: 2.0.1
-      unified: 10.1.2
-    dev: true
-
-  /remark-math/5.1.1:
-    resolution: {integrity: sha512-cE5T2R/xLVtfFI4cCePtiRn+e6jKMtFDR3P8V3qpv8wpKjwvHoBA4eJzvX+nVrnlNy0911bdGmuspCSwetfYHw==}
-    dependencies:
-      '@types/mdast': 3.0.10
-      mdast-util-math: 2.0.1
-      micromark-extension-math: 2.0.2
       unified: 10.1.2
     dev: true
 
@@ -5366,16 +5134,6 @@ packages:
     resolution: {integrity: sha1-WPcc7jvVGbWdSyqEO2x95krAR2Q=}
     dev: true
 
-  /sync-fetch/0.3.1:
-    resolution: {integrity: sha512-xj5qiCDap/03kpci5a+qc5wSJjc8ZSixgG2EUmH1B8Ea2sfWclQA7eH40hiHPCtkCn6MCk4Wb+dqcXdCy2PP3g==}
-    engines: {node: '>=8'}
-    dependencies:
-      buffer: 5.7.1
-      node-fetch: 2.6.7
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
   /table/6.8.0:
     resolution: {integrity: sha512-s/fitrbVeEyHKFa7mFdkuQMWlH1Wgw/yEXMt5xACT4ZpzWFluehAxRtUUQKPuWhaLAWhFcVx6w3oC8VKaUfPGA==}
     engines: {node: '>=10.0.0'}
@@ -5447,10 +5205,6 @@ packages:
   /totalist/3.0.0:
     resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}
     engines: {node: '>=6'}
-    dev: true
-
-  /tr46/0.0.3:
-    resolution: {integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=}
     dev: true
 
   /trim-newlines/3.0.1:
@@ -5555,13 +5309,6 @@ packages:
     resolution: {integrity: sha512-GFxmfEAa0vi9i5sd0R2kcrI9ks0r82NasRq5QHh2ysGngrc6GiqD5CDf1FjPenY4vApmFASBIIlk/jj5J5YbmQ==}
     dependencies:
       '@types/unist': 2.0.6
-    dev: true
-
-  /unist-util-find-after/4.0.0:
-    resolution: {integrity: sha512-gfpsxKQde7atVF30n5Gff2fQhAc4/HTOV4CvkXpTg9wRfQhZWdXitpyXHWB6YcYgnsxLx+4gGHeVjCTAAp9sjw==}
-    dependencies:
-      '@types/unist': 2.0.6
-      unist-util-is: 5.1.1
     dev: true
 
   /unist-util-generated/2.0.0:
@@ -5894,21 +5641,6 @@ packages:
 
   /web-namespaces/2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
-    dev: true
-
-  /webidl-conversions/3.0.1:
-    resolution: {integrity: sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE=}
-    dev: true
-
-  /whatwg-fetch/3.6.2:
-    resolution: {integrity: sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==}
-    dev: true
-
-  /whatwg-url/5.0.0:
-    resolution: {integrity: sha1-lmRU6HZUYuN2RNNib2dCzotwll0=}
-    dependencies:
-      tr46: 0.0.3
-      webidl-conversions: 3.0.1
     dev: true
 
   /which-boxed-primitive/1.0.2:
