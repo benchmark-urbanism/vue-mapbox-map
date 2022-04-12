@@ -1,6 +1,14 @@
 {
   "hosting": {
-    "public": "./docs/dist",
+    "public": "./dist",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "trailingSlash": false,
+    "cleanUrls": true,
     "headers": [
       {
         "source": "/**",
