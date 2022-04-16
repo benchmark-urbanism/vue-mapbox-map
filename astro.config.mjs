@@ -102,7 +102,6 @@ export default defineConfig({
     tailwind({
       config: {
         path: './tailwind.config.cjs',
-        applyAstroPreset: false,
         applyBaseStyles: false,
       },
     }),
