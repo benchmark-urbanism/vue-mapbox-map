@@ -4,9 +4,7 @@ module.exports = {
     require('postcss-html'),
     require('postcss-markdown'),
     require('tailwindcss/nesting'),
-    require('tailwindcss')({
-      config: './docs/tailwind.config.cjs',
-    }),
+    require('tailwindcss'),
     require('autoprefixer'),
   ],
 }

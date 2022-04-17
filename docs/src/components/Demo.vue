@@ -2,17 +2,17 @@
 .bg-dark-grey.py-3.rounded.border-mid-grey
   .text-center
     div Scroll to see some map action!
-  #map-container.my-3.w-full.bg-theme(style='height: 400px; min-height: 400px; max-height: 400px')
+  #map-container
   .flex.justify-center
-    .flex.flex-initial.px-2
-      .flex-initial.self-end.px-2.font-medium Zoom:
-      .flex-initial.self-end.px-2.text-xl {{ zoom.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
-    .flex.flex-initial.px-2
-      .flex-initial.self-end.px-2.font-medium Pitch:
-      .flex-initial.self-end.px-2.text-xl {{ pitch.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
-    .flex.flex-initial.px-2
-      .flex-initial.self-end.px-2.font-medium Bearing:
-      .flex-initial.self-end.px-2.text-xl {{ bearing.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    .pair
+      .label Zoom:
+      .info {{ zoom.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    .pair
+      .label Pitch:
+      .info {{ pitch.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    .pair
+      .label Bearing:
+      .info {{ bearing.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
   VueMapboxMap(
     :map='mapInstance'
     :lng='scene.lng'
@@ -62,3 +62,18 @@ onMounted(() => {
   )
 })
 </script>
+
+<style lang="postcss" scoped>
+#map-container {
+  @apply my-3 w-full bg-theme h-[400px] min-h-[400px] max-h-[400px];
+}
+.pair {
+  @apply flex flex-initial px-2;
+}
+.label {
+  @apply flex-initial self-end px-2 font-medium;
+}
+.info {
+  @apply flex-initial self-end px-2 text-xl;
+}
+</style>
