@@ -43,11 +43,16 @@ import '../styles/tailwind.css'
   </body>
 </html>
 
-<style lang="postcss">
+<style>
   .app-container {
     @apply flex h-full min-h-screen w-full flex-col items-center;
   }
   .app-content {
-    @apply flex max-w-5xl flex-col items-stretch py-10;
+    @apply w-full flex max-w-5xl flex-col items-stretch py-10 px-3;
+  }
+  @media only screen and (max-width: 820px) {
+    .app-content {
+      @apply px-1;
+    }
   }
 </style>

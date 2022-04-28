@@ -63,7 +63,7 @@ onMounted(() => {
 })
 </script>
 
-<style lang="postcss" scoped>
+<style>
 #map-container {
   @apply my-3 w-full bg-theme h-[400px] min-h-[400px] max-h-[400px];
 }
@@ -74,6 +74,14 @@ onMounted(() => {
   @apply flex-initial self-end px-2 font-medium;
 }
 .info {
-  @apply flex-initial self-end px-2 text-xl;
+  @apply flex-initial self-end px-2 text-lg;
+}
+@media only screen and (max-width: 820px) {
+  .label {
+    @apply text-sm;
+  }
+  .info {
+    @apply text-base;
+  }
 }
 </style>
