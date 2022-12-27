@@ -2,8 +2,20 @@ module.exports = {
   printWidth: 100,
   semi: false,
   singleQuote: true,
-  pugAttributeSeparator: 'none',
+  pugAttributeSeparator: 'as-needed',
   pugCommentPreserveSpaces: 'trim-all',
-  pugWrapAttributesThreshold: -1,
-  pugEmptyAttributes: 'as-is',
+  pugSortAttributes: 'asc',
+  pugWrapAttributesThreshold: 1,
+  pugFramework: 'vue',
+  pugEmptyAttributes: 'all',
+  pugClassLocation: 'after-attributes',
+  pugExplicitDiv: true,
+  overrides: [
+    {
+      files: '*.astro',
+      options: {
+        parser: 'astro',
+      },
+    },
+  ],
 }

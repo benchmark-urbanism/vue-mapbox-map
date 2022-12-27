@@ -1,9 +1,13 @@
 <template lang="pug">
 div
-  #repo-container
-    a#repo-link(:href='repoLink' :title='title' target='_blank')
+  div#repo-container
+    a#repo-link(
+      :href='repoLink',
+      :title='title'
+      target='_blank'
+    )
       Github#repo-logo
-      #repo-text {{ repoText }}
+      div#repo-text {{ repoText }}
 </template>
 
 <script setup>
@@ -31,7 +35,7 @@ const title = computed(() =>
   @apply my-4 flex items-center justify-center;
 }
 #repo-link {
-  @apply text-theme relative flex flex-col items-center justify-center;
+  @apply relative flex flex-col items-center justify-center text-theme;
 }
 #repo-logo {
   @apply h-20 w-20 transition-all;

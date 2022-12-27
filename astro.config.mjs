@@ -1,35 +1,10 @@
+import mdx from '@astrojs/mdx'
+import prefetch from '@astrojs/prefetch'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import vue from '@astrojs/vue'
 import { defineConfig } from 'astro/config'
-import { h, s } from 'hastscript'
-import { visit } from 'unist-util-visit'
-
-function admonitionRemarkPlugin() {
-  return (tree) => {
-    visit(tree, (node) => {
-      if (
-        node.type === 'textDirective' ||
-        node.type === 'leafDirective' ||
-        node.type === 'containerDirective'
-      ) {
-        if (node.name === 'note') {
-          const data = node.data || (node.data = {})
-          const tagName = node.type === 'textDirective' ? 'span' : 'div'
-          data.hName = tagName
-          data.hProperties = h(tagName, { class: 'box note' }).properties
-        } else if (node.name === 'warning') {
-          const data = node.data || (node.data = {})
-          const tagName = node.type === 'textDirective' ? 'span' : 'div'
-          data.hName = tagName
-          data.hProperties = h(tagName, { class: 'box warning' }).properties
-        } else {
-          return
-        }
-      }
-    })
-  }
-}
+import { s } from 'hastscript'
 
 export default defineConfig({
   root: '.',
@@ -51,7 +26,6 @@ export default defineConfig({
       wrap: true,
     },
     remarkPlugins: [
-      'remark-gfm',
       'remark-emoji',
       [
         'remark-smartypants',
@@ -60,7 +34,6 @@ export default defineConfig({
         },
       ],
       'remark-directive',
-      admonitionRemarkPlugin,
     ],
     rehypePlugins: [
       'rehype-slug',
@@ -106,5 +79,7 @@ export default defineConfig({
       },
     }),
     sitemap(),
+    prefetch(),
+    mdx(),
   ],
 })

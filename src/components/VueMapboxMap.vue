@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, toRefs, watchEffect } from 'vue'
 
 // props
@@ -19,7 +19,7 @@ const props = defineProps({
     type: String,
     required: false,
     default: 'jump',
-    validator: function (value) {
+    validator: function (value: string) {
       return ['jump', 'ease', 'fly'].indexOf(value) !== -1
     },
   },
@@ -52,7 +52,7 @@ const props = defineProps({
   around: {
     type: Array,
     default: null,
-    validator: function (value) {
+    validator: function (value: Array<Number>) {
       return value.length === 2
     },
   },
