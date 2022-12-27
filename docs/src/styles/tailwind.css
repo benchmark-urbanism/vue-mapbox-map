@@ -110,6 +110,9 @@
   }
 
   @media only screen and (max-width: 820px) {
+    body {
+      @apply text-sm;
+    }
     h1 {
       @apply pt-8 pb-2 text-2xl font-light;
     }
