@@ -60,7 +60,7 @@ module.exports = {
         theme: '#D32333',
         'lighter-grey': '#F1F1F1',
         'light-grey': '#A8A8A8',
-        'mid-grey': '#404040',
+        'mid-grey': '#222',
         'dark-grey': '#1D1D1D',
         'darker-grey': '#19181B',
       },

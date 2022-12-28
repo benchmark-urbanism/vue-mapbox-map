@@ -6,21 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: pnpm/action-setup@v2.1.0
-        with:
-          version: 6.0.2
-          run_install: |
-            - recursive: true
-
-      - run: pnpm run bundle
-
+      - uses: actions/checkout@v3
+      - run: npm install && npm run bundle
       - uses: actions/setup-node@v2
         with:
           registry-url: 'https://registry.npmjs.org'
           scope: '@benchmark-urbanism'
-
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

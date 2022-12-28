@@ -23,18 +23,16 @@ import '../styles/tailwind.css'
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      defer
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
     />
     <link
-      defer
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600;700&display=swap"
     />
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet" />
   </head>
-  <body class="w-full h-full">
+  <body class="h-full w-full">
     <div class="app-container">
       <div class="app-content">
         <slot />
@@ -48,7 +46,7 @@ import '../styles/tailwind.css'
     @apply flex h-full min-h-screen w-full flex-col items-center;
   }
   .app-content {
-    @apply w-full flex max-w-5xl flex-col items-stretch py-10 px-3;
+    @apply flex w-full max-w-5xl flex-col items-stretch py-10 px-3;
   }
   @media only screen and (max-width: 820px) {
     .app-content {

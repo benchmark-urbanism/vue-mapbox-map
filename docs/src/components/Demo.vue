@@ -1,25 +1,25 @@
 <template lang="pug">
-.bg-dark-grey.py-3.rounded.border-mid-grey
-  .text-center
+div.bg-dark-grey.py-3.rounded.border-mid-grey
+  div.text-center
     div Scroll to see some map action!
-  #map-container
-  .flex.justify-center
-    .pair
-      .label Zoom:
-      .info {{ zoom.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
-    .pair
-      .label Pitch:
-      .info {{ pitch.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
-    .pair
-      .label Bearing:
-      .info {{ bearing.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+  div#map-container
+  div.flex.justify-center
+    div.pair
+      div.label Zoom:
+      div.info {{ zoom.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    div.pair
+      div.label Pitch:
+      div.info {{ pitch.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
+    div.pair
+      div.label Bearing:
+      div.info {{ bearing.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) }}
   VueMapboxMap(
-    :map='mapInstance'
-    :lng='scene.lng'
-    :lat='scene.lat'
+    :bearing='bearing',
+    :lat='scene.lat',
+    :lng='scene.lng',
+    :map='mapInstance',
+    :pitch='pitch',
     :zoom='zoom'
-    :pitch='pitch'
-    :bearing='bearing'
   )
 </template>
 
@@ -63,9 +63,9 @@ onMounted(() => {
 })
 </script>
 
-<style>
+<style lang="postcss">
 #map-container {
-  @apply my-3 w-full bg-theme h-[400px] min-h-[400px] max-h-[400px];
+  @apply my-3 h-[400px] max-h-[400px] min-h-[400px] w-full bg-theme;
 }
 .pair {
   @apply flex flex-initial px-2;
